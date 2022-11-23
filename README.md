@@ -1,3 +1,3 @@
-# FIN-Travel - web aplikacija
+# FIN-Travel (Projektovanje informacionih sistema i baza podataka) - web aplikacija
 
 
