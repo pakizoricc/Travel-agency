@@ -4,20 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADMIN POCETNA</title>
-    <link rel="stylesheet" href="C:\Users\hp\Downloads\bootstrap-5.3.0-alpha1-dist\bootstrap-5.3.0-alpha1-dist\css\bootstrap.css">
-    <style>
-      
-    </style>
+    <title>FINTravel</title>
+    <link rel="icon" type="image/png" href="Screenshot 2023-01-19 021232.png"/>
+    <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist\css\bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="bootstrap-5.3.0-alpha1-dist\js\bootstrap.bundle.js"></script>
 </head>
 <body>
-
-    <script src="C:\Users\hp\Downloads\bootstrap-5.3.0-alpha1-dist\bootstrap-5.3.0-alpha1-dist\js\bootstrap.bundle.js"></script>
-  
     <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" data-bs-theme="dark">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="C:\Users\hp\Desktop\baze2(travel)\Screenshot 2023-01-19 021232.png" alt="Bootstrap" width="70" height="35">
+                <img src="Screenshot 2023-01-19 021232.png" alt="Bootstrap" width="70" height="35">
               </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -25,23 +22,26 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Pocetna</a>
+                <a class="nav-link active" aria-current="page" href="#" 
+                style="font-family: Arial, Helvetica, sans-serif;">Početna</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Pretraga</a>
+                <a class="nav-link" href="#" style="font-family: Arial, Helvetica, sans-serif;">Pretraga</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Upravljane korisnicima
+                <a class="nav-link dropdown-toggle" href="#" role="button" 
+                data-bs-toggle="dropdown" aria-expanded="false" style="font-family: Arial, Helvetica, sans-serif;">
+                  Upravljanje korisnicima
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Dodaj novog korisnika</a></li>
-                  <li><a class="dropdown-item" href="#">Pregled trenutnih korisnika</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="#" 
+                    style="font-family: Arial, Helvetica, sans-serif;">Dodaj novog korisnika</a></li>
+                  <li><a class="dropdown-item" href="#" 
+                    style="font-family: Arial, Helvetica, sans-serif;">Pregled trenutnih korisnika</a></li>
                 </ul>
                 <li class="nav-item">
-                  <a class="nav-link ms-auto" href="#">Odjavi se</a>
+                  <a class="nav-link ms-auto" href="#" 
+                  style="font-family: Arial, Helvetica, sans-serif;">Odjavi se</a>
                 </li>
               </li>
               
@@ -66,13 +66,12 @@
         <form action="">
         <div class="my-2 card">
           <div class="card-body">
-            <h5 class="card-title">Dodaj ponudu</h5>
+            <h5 class="card-title" style="font-family: Arial, Helvetica, sans-serif;">Dodaj ponudu</h5>
             <div class="row">
               <div class="col-sm">
                   <div class="mb-2">
                     <label id="naziv-label" for="nazivNovog-input" class="form-label"
-                      >Naziv aranzmana</label
-                    >
+                    style="font-family: Arial, Helvetica, sans-serif;">Naziv aranžmana</label>
                     <div class="input-group">
                       
                       <input
@@ -91,8 +90,7 @@
                 <div class="col-sm">
                     <div class="mb-2">
                       <label id="lokacijeNovog-label" for="lokacijeNovog-input" class="form-label"
-                        >Lokacije</label
-                      >
+                      style="font-family: Arial, Helvetica, sans-serif;">Lokacije</label>
                       <div class="input-group">
                         
                         <input
@@ -109,7 +107,7 @@
                   <div class="col-sm">
                     <div class="mb-2">
                       <label id="kontinentNovog-label" for="kontinentNovog-input" class="form-label"
-                        >Kontinent</label>
+                      style="font-family: Arial, Helvetica, sans-serif;">Kontinent</label>
                       <div class="input-group">
                         
                         <input
@@ -128,7 +126,7 @@
             <div class="row">
               <div class="col-sm">
                   <div class="mb-2">
-                    <label   for="role">Tip prevoza</label>
+                    <label for="role" style="font-family: Arial, Helvetica, sans-serif;">Tip prevoza</label>
                           <select name="prevozNovog_id" class="form-control">
                               
                                       <option  style="font-weight:bold;" value="">nesto</option>
@@ -144,11 +142,11 @@
                     <div class="mb-2 col">
                       <div class="h-100 card">
                         <div class="card-body">
-                          <h5 class="card-title">Termin</h5>
+                          <h5 class="card-title" style="font-family: Arial, Helvetica, sans-serif;">Termin</h5>
                           <div class="mb-2">
                             <div id="departure-date-New" class="mb-2">
                                 <label id="departure-date-New-label" for="departure-date-New-input" class="form-label"
-                                  >Od kog datuma</label
+                                style="font-family: Arial, Helvetica, sans-serif;">Od kog datuma</label
                                 >
                                 <div class="input-group">
                                   <span class="input-group-text"><i class="bi-calendar"></i></span>
@@ -162,7 +160,7 @@
                               </div>
                               <div id="return-date-New" class="mb-2">
                                 <label id="return-date-New-label" for="return-date-New-input" class="form-label"
-                                  >Do kod datuma</label
+                                style="font-family: Arial, Helvetica, sans-serif;">Do kod datuma</label
                                 >
                                 <div class="input-group">
                                   <span class="input-group-text"><i class="bi-calendar-fill"></i> </span>
@@ -185,11 +183,11 @@
             <div class="mb-2 col">
               <div class="h-100 card">
                 <div class="card-body">
-                  <h5 class="card-title">Opis smestaja</h5>
+                  <h5 class="card-title" style="font-family: Arial, Helvetica, sans-serif;">Opis smeštaja</h5>
                   <div class="mb-2">
                     
                       <label id="imeObjekta-label" for="imeObjekta-input" class="form-label"
-                        >Ime smestajnog objekta</label>
+                      style="font-family: Arial, Helvetica, sans-serif;">Ime smeštajnog objekta</label>
                       <div class="input-group">
                         
                         <input
@@ -208,7 +206,7 @@
                       <div class="mb-2">
                     
                         <label id="tipSmestaja-label" for="tipSmestaja-input" class="form-label"
-                          >Tip smestaja</label>
+                        style="font-family: Arial, Helvetica, sans-serif;">Tip smeštaja</label>
                         <div class="input-group">
                           
                           <input
@@ -227,7 +225,7 @@
                         <div class="mb-2">
                     
                           <label id="kategorijaSmestaja-label" for="kategorijaSmestaja-input" class="form-label"
-                            >Kategorija smestaja</label>
+                          style="font-family: Arial, Helvetica, sans-serif;">Kategorija smeštaja</label>
                           <div class="input-group">
                             
                             <input
@@ -246,7 +244,7 @@
                           <div class="mb-2">
                     
                             <label id="sadrzi-label" for="sadrzi-input" class="form-label"
-                              >Sadrzi</label>
+                            style="font-family: Arial, Helvetica, sans-serif;">Sadrži</label>
                             <div class="input-group">
                               
                               <input
@@ -279,13 +277,13 @@
             <div class="mb-2 col">
               <div class="h-100 card">
                 <div class="card-body">
-                  <h5 class="card-title">Detaljan opis putovanja</h5>
+                  <h5 class="card-title" style="font-family: Arial, Helvetica, sans-serif;">Detaljan opis putovanja</h5>
              
                  
                       <hr class="my-4">
                       <!--napisacu prvi dan i posle se sve isto ponavlja koliko dana ima-->
                       <label id="dan-label" for="dan-input" class="form-label"
-                              >Dan broj:</label>
+                      style="font-family: Arial, Helvetica, sans-serif;">Dan broj:</label>
                             <div class="input-group">
                               
                               <input
@@ -317,7 +315,7 @@
             <div class="col-sm">
               <div class="mb-2">
                 <label id="napomenaNovog-label" for="napomenaNovog-input" class="form-label"
-                  >Napomena</label>
+                style="font-family: Arial, Helvetica, sans-serif;">Napomena</label>
                 <div class="input-group">
                   
                   <input
@@ -336,7 +334,7 @@
           </div>
             <div class="row">
               <div class="col">
-                <button id="search-button" class="w-100 btn btn-primary">
+                <button id="search-button" class="w-100 btn btn-primary" style="font-family: Arial, Helvetica, sans-serif;">
                   Dodaj
                 </button>
               </div>
@@ -357,19 +355,19 @@
             <div class="row">
               
             
-            <h2 class="text-center">Rezevacije koje cekaju odobrenje</h2>
+            <h2 class="text-center" style="font-family: Arial, Helvetica, sans-serif;">Rezevacije koje čekaju odobrenje</h2>
               <div class="col" style="margin-top: 10px; margin-bottom: 10px;">
               
                 <div class="card " style="margin-top: 5px; margin-bottom: 5px;">
                   <div class="card-body">
-                    <h5 class="card-title text-center">Naziv ponude:</h5>
-                    <p class="card-text">Puno ime klijenta:</p>
-                    <p class="card-text">Kontakti:</p>
-                    <p class="card-text">Broj putnika:</p>
-                    <p class="card-text">Dece:</p>
-                    <p class="card-text">Odraslih:</p>
+                    <h5 class="card-title text-center" style="font-family: Arial, Helvetica, sans-serif;">Naziv ponude:</h5>
+                    <p class="card-text" style="font-family: Arial, Helvetica, sans-serif;">Puno ime klijenta:</p>
+                    <p class="card-text" style="font-family: Arial, Helvetica, sans-serif;">Kontakti:</p>
+                    <p class="card-text" style="font-family: Arial, Helvetica, sans-serif;">Broj putnika:</p>
+                    <p class="card-text" style="font-family: Arial, Helvetica, sans-serif;">Dece:</p>
+                    <p class="card-text" style="font-family: Arial, Helvetica, sans-serif;">Odraslih:</p>
                     
-                    <p class="card-text">Navedena napomena:</p>
+                    <p class="card-text" style="font-family: Arial, Helvetica, sans-serif;">Navedena napomena:</p>
                   </div>
                 
               
@@ -377,15 +375,15 @@
                 <div class="card-footer text-center">
                   <div class="row">
                     <div class="col">
-                    <button id="search-button" class="w-50 mb-2 btn btn-primary">
+                    <button id="search-button" class="w-50 mb-2 btn btn-primary" style="font-family: Arial, Helvetica, sans-serif;">
                       Prihvati
                     </button>
                   
                   </div>
                   <div class="col">
 
-                    <button id="btn-danger" class="w-50 mb-2 btn btn-danger">
-                      Izbrisi
+                    <button id="btn-danger" class="w-50 mb-2 btn btn-danger" style="font-family: Arial, Helvetica, sans-serif;">
+                      Izbriši
                     </button>
                   </div>
                 </div>
@@ -423,19 +421,19 @@
 
       <section class="footer" style="width: 100%; background-color: #1c2331; padding-top: 40px; bottom: 0; text-align: center; text-decoration-color: #fff; ">
         <section class="" style="color: #ccc;">
-          <div class="container text-center text-md-start mt-5" style="">
+          <div class="container text-center text-md-start mt-5">
             
             <div class="row mt-3">
               
               <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                 
-                <h6 class="text-uppercase fw-bold">FIN travel</h6>
+                <h6 class="text-uppercase fw-bold" style="font-family: Arial, Helvetica, sans-serif;">FIN travel</h6>
                 <hr
                     class="mb-4 mt-0 d-inline-block mx-auto"
                     style="width: 60px; background-color: #7c4dff; height: 2px"
                     />
-                <p>
-                  neki mali opis
+                <p style="font-family: Arial, Helvetica, sans-serif;">
+                  pavlezoric2000@gmail.com
                 </p>
               </div>
               
@@ -489,15 +487,15 @@
               
               <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                 
-                <h6 class="text-uppercase fw-bold">Kontakti</h6>
+                <h6 class="text-uppercase fw-bold" style="font-family: Arial, Helvetica, sans-serif;">Kontakti</h6>
                 <hr
                     class="mb-4 mt-0 d-inline-block mx-auto"
                     style="width: 60px; background-color: #7c4dff; height: 2px"
                     />
-                <p><i class="fas fa-home mr-3"></i> Kragujevac, Srbija 34000</p>
-                <p><i class="fas fa-envelope mr-3"></i> fintravel@gmail.com</p>
-                <p><i class="fas fa-phone mr-3"></i> + 381 6234 567 88</p>
-                <p><i class="fas fa-print mr-3"></i> + 381 6234 567 89</p>
+                <p style="font-family: Arial, Helvetica, sans-serif;"><i class="fas fa-home mr-3"></i> Kragujevac, Srbija 34000</p>
+                <p style="font-family: Arial, Helvetica, sans-serif;"><i class="fas fa-envelope mr-3"></i> fintravel@gmail.com</p>
+                <p style="font-family: Arial, Helvetica, sans-serif;"><i class="fas fa-phone mr-3"></i> + 381 6234 567 88</p>
+                <p style="font-family: Arial, Helvetica, sans-serif;"><i class="fas fa-print mr-3"></i> + 381 6234 567 89</p>
               </div>
              
             </div>
@@ -512,7 +510,7 @@
              class="text-center p-3"
              style="background-color: rgba(0, 0, 0, 0.2)"
              >
-          <P style="color: #ccc;">© 2020 Copyright: FIN travel</P>
+          <P style="color: #ccc; font-family: Arial, Helvetica, sans-serif;">© 2020 Copyright: FIN travel</P>
           
         </div>
       </section>

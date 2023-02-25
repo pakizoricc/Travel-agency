@@ -5,8 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin pregled putovanja</title>
-    <link rel="stylesheet" href="C:\Users\hp\Downloads\bootstrap-5.3.0-alpha1-dist\bootstrap-5.3.0-alpha1-dist\css\bootstrap.css">
+    <title>FINTravel</title>
+    <link rel="icon" type="image/png" href="Screenshot 2023-01-19 021232.png"/>
+    <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist\css\bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="bootstrap-5.3.0-alpha1-dist\js\bootstrap.bundle.js"></script>
     <style>
         a:link { text-decoration: none; }
   
@@ -23,13 +26,11 @@
       </style>
 </head>
 <body>
-
-    <script src="C:\Users\hp\Downloads\bootstrap-5.3.0-alpha1-dist\bootstrap-5.3.0-alpha1-dist\js\bootstrap.bundle.js"></script>
-  
-    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" data-bs-theme="dark"
+    style = "font-family:Arial, Helvetica, sans-serif; font-weight:bold;">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="C:\Users\hp\Desktop\baze2(travel)\Screenshot 2023-01-19 021232.png" alt="Bootstrap" width="70" height="35">
+                <img src="Screenshot 2023-01-19 021232.png" alt="Bootstrap" width="70" height="35">
               </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -37,33 +38,23 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Pocetna</a>
+                <a class="nav-link active" aria-current="page" href="pocetna.php">Početna</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Pretraga</a>
+                <a class="nav-link" href="pretraga.php">Pretraga</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Upravljane korisnicima
+                <a class="nav-link dropdown-toggle" href="upravljajKorisnicima.php" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Upravljanje aranžmanima
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Dodaj novog korisnika</a></li>
-                  <li><a class="dropdown-item" href="#">Pregled trenutnih korisnika</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="upravljaj_aranz.php">Dodaj novi aranžman</a></li>
+                  <li><a class="dropdown-item" href="odredjenoPutovanje.php">Pregled aranžmana</a></li>
                 </ul>
                 <li class="nav-item">
-                  <a class="nav-link ms-auto" href="#">Odjavi se</a>
+                  <a class="nav-link ms-auto" href="prijava.php">Odjavi se</a>
                 </li>
               </li>
-              
-             
-            
-            <!--
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>-->
           </div>
         </div>
       </nav>
@@ -72,14 +63,13 @@
 
 
 
-      <div class="container " style="margin-top: 100px; margin-bottom: 800px;">
+      <div class="container " style="margin-top: 100px; margin-bottom: 800px; font-family:Arial, Helvetica, sans-serif">
         <div class="row">
           <div class="col text-center mb-5">
             <h1>Sve ponude</h1>
           </div>
         </div>
 
-        
         <div class="row">
           
           <div class="col-sm-12 col-md-6 col-lg-4 col-mb-3 " style="margin-top: 10px; margin-bottom: 10px;">
@@ -124,7 +114,6 @@
                 </div>
               </div>
             </div>
-    
           </div>
           
             <div class="col-sm-12 col-md-6 col-lg-4 col-mb-3" style="margin-top: 10px; margin-bottom: 10px;">
@@ -138,28 +127,8 @@
                   </p>
                   <p class="card-text">Last updated 3 mins ago</p>
                 </div>
-              </div>
-      
-           
+              </div>    
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
           <div class="container" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; ">
             <div class="pagination" style="display: flex; align-items: center; background-color: #fff; color: #383838; padding: 10px 40px;border-radius: 6px;">
               <button class="btn1" style="display: inline-flex;
@@ -184,7 +153,6 @@
                 font-weight: 500;line-height: 25px;cursor: pointer;" value="5" onclick="activeLink()">5</li>
                 <li class="link"  style="display: inline-block;margin: 0 10px;width: 25px;height: 25px;border-radius: 50%;text-align: center;font-size: 15px;
                 font-weight: 500;line-height: 25px;cursor: pointer;" value="6" onclick="activeLink()">6</li>
-                
               </ul>
               <button class="btn2" style="display: inline-flex;
               align-items: center;
@@ -195,38 +163,19 @@
               outline: none;
               border: none;
               cursor: pointer;" onclick="nextBtn" >next</button>
-
             </div>
-
           </div>
         </div>
-        
       </div>
          
        
        </div>
       </div>
       
-            
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <section class="footer" style="width: 100%; background-color: #1c2331; padding-top: 40px; bottom: 0; text-align: center; text-decoration-color: #fff; ">
+      <section class="footer" style="width: 100%; background-color: #1c2331; padding-top: 40px; 
+      bottom: 0; text-align: center; text-decoration-color: #fff; font-family:Arial, Helvetica, sans-serif">
         <section class="" style="color: #ccc;">
-          <div class="container text-center text-md-start mt-5" style="">
+          <div class="container text-center text-md-start mt-5">
             
             <div class="row mt-3">
               

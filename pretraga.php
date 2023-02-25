@@ -1,0 +1,267 @@
+<?php include('sources\search_offers.php') ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINTravel</title>
+    <link rel="icon" type="image/png" href="Screenshot 2023-01-19 021232.png"/>
+    <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist\css\bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="bootstrap-5.3.0-alpha1-dist\js\bootstrap.bundle.js"></script>
+    <style>
+      a:link { text-decoration: none; }
+
+
+      a:visited { text-decoration: none; }
+
+
+      a:hover { text-decoration: none; }
+
+
+      a:active { text-decoration: none; }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" data-bs-theme="dark"
+    style="font-family: Arial, Helvetica, sans-serif; font-weight:bold">
+        <div class="container">
+            <a class="navbar-brand">
+                <img src="Screenshot 2023-01-19 021232.png" alt="Bootstrap" width="70" height="35">
+            </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="pocetna.php">Početna</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="pretraga.php">Pretraga</a>
+              </li>
+              <li class="nav-item dropdown">
+                <li class="nav-item">
+                  <a class="nav-link ms-auto" href="prijava.php">Ulogovanje</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link ms-auto" href="registracija.php">Registracija</a>
+                </li>
+              </li>
+              
+             
+            
+            <!--
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>-->
+          </div>
+        </div>
+      </nav>
+
+      <form action="pretraga.php" method="post">
+        <div class="container-sm" style="padding: 100px;margin-bottom: 500px; font-family: Arial, Helvetica, sans-serif;">
+          <div class="my-2 card">
+            <div class="card-body">
+              <h5 class="card-title">Pretraga</h5>
+              <div class="row">
+                <div class="col-sm">
+                  <div class="mb-2">
+                    <label id="naziv-label" for="naziv-input" class="form-label">Naziv aranžmana</label>
+                    <div class="input-group">
+                      
+                      <input type="text" class="form-control" id="naziv-input" placeholder="Naziv aranžmana"
+                      aria-describedby="naziv-label" value = "<?php echo $naziv?>">
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm">
+                    <div class="mb-2">
+                      <label id="lokacija-label" for="lokacija-input" class="form-label">Lokacija</label>
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="bi-pin-map"></i> </span>
+                        <input
+                        type="text"
+                        class="form-control"
+                        list="lokacija-options"
+                        id="lokacija-input"
+                        placeholder="Lokacija"
+                        aria-describedby="lokacija-label"/>
+                        <datalist id="lokacija-options"></datalist>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="col-sm">
+                  <div class="mb-2">
+                    <label id="kontinent-label" for="kontinent-input" class="form-label">Kontinent</label>
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="bi-pin-map"></i> </span>
+                        <input
+                        type="text"
+                        class="form-control"
+                        list="kontinent-options"
+                        id="kontinent-input"
+                        placeholder="Kontinent"
+                        aria-describedby="kontinent-label"/>
+                        <datalist id="kontinent-options"></datalist>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm">
+                  <div class="mb-2">
+                    <label for="role">Tip prevoza</label>
+                          <select name="prevoz_id" class="form-control">
+                              <?php foreach ($roles as $option): ?>
+                                  <?php if ($option['id'] != 3): ?>
+                                      <option  style="font-weight:bold;" value="<?php echo $option['id'] ?>"><?php echo $option['name']; ?></option>
+                                  <?php endif ?>
+                              <?php endforeach ?>
+                          </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="mb-2 col">
+                  <div class="h-100 card">
+                    <div class="card-body">
+                      <h5 class="card-title">Termin</h5>
+                        <div class="mb-2">
+                          <div id="departure-date" class="mb-2">
+                            <label id="departure-date-label" for="departure-date-input" class="form-label">Od kog datuma</label>
+                            <div class="input-group">
+                              <span class="input-group-text"><i class="bi-calendar"></i></span>
+                              <input
+                                type="date"
+                                class="form-control"
+                                id="departure-date-input"
+                                aria-describedby="departure-date-label"
+                              />
+                            </div>
+                          </div>
+                          <div id="return-date" class="mb-2">
+                            <label id="return-date-label" for="return-date-input" class="form-label">Do kod datuma</label>
+                            <div class="input-group">
+                              <span class="input-group-text"><i class="bi-calendar-fill"></i> </span>
+                              <input
+                                type="date"
+                                class="form-control"
+                                id="return-date-input"
+                                aria-describedby="return-date-label"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <button id="search-button" class="w-100 btn btn-primary">
+                    Trazi
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      
+      <section class="footer" style="width: 100%; background-color: #1c2331; padding-top: 40px; bottom: 0; 
+      text-align: center; text-decoration-color: #fff; font-family: Arial, Helvetica, sans-serif;">
+        <section class="" style="color: #ccc;">
+          <div class="container text-center text-md-start mt-5">
+              
+            <div class="row mt-3">
+                
+              <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                  
+                <h6 class="text-uppercase fw-bold">FIN travel</h6>
+                <hr
+                        class="mb-4 mt-0 d-inline-block mx-auto"
+                        style="width: 60px; background-color: #7c4dff; height: 2px"
+                        />
+                <p>
+                    neki mali opis
+                </p>
+              </div>
+                      
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                  
+                <h6 class="text-uppercase fw-bold">Nesto</h6>
+                <hr
+                      class="mb-4 mt-0 d-inline-block mx-auto"
+                      style="width: 60px; background-color: #7c4dff; height: 2px"
+                      />
+                <p>
+                    Nesto
+                </p>
+                <p>
+                    Nesto
+                </p>
+                <p>
+                    Nesto
+                </p>
+                <p>
+                    Nesto
+                </p>
+            </div>
+                    
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                  
+              <h6 class="text-uppercase fw-bold">Nesto</h6>
+              <hr
+                      class="mb-4 mt-0 d-inline-block mx-auto"
+                      style="width: 60px; background-color: #7c4dff; height: 2px"
+                      />
+              <p>
+                    Nesto
+              </p>
+              <p>
+                    Nesto
+              </p>
+              <p>
+                    Nesto
+              </p>
+              <p>
+                    Nesto
+              </p>
+            </div>
+                      
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                  
+              <h6 class="text-uppercase fw-bold">Kontakti</h6>
+              <hr
+                      class="mb-4 mt-0 d-inline-block mx-auto"
+                      style="width: 60px; background-color: #7c4dff; height: 2px"
+                      />
+              <p><i class="fas fa-home mr-3"></i> Kragujevac, Srbija 34000</p>
+              <p><i class="fas fa-envelope mr-3"></i> fintravel@gmail.com</p>
+              <p><i class="fas fa-phone mr-3"></i> + 381 6234 567 88</p>
+              <p><i class="fas fa-print mr-3"></i> + 381 6234 567 89</p>
+            </div>     
+          </div>      
+        </section>
+       
+        <div
+               class="text-center p-3"
+               style="background-color: rgba(0, 0, 0, 0.2)"
+               >
+        <P style="color: #ccc;">© 2020 Copyright: FIN travel</P>
+            
+        </div>
+      </section>
+</body>
+</html>
