@@ -5,7 +5,7 @@ $password = "";
 $errors = array();
 
 $conn = mysqli_connect('localhost', 'root', '', 'fin_travel');
-// LOGIN USER
+//Ulogovanje
 if (isset($_POST['submit'])) {
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $password = isset($_POST['password']) ? mysqli_real_escape_string($conn, $_POST['password']) : '';
