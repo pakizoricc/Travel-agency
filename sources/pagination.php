@@ -8,8 +8,10 @@ if (!$conn) {
 }
 
 // Get the total number of images in the folder
-$dir_path = 'offers';
-$images = glob($dir_path . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
+$dir_path = '../offers/';
+$extensions = array('jpg');
+
+$images = glob('C:\xampp\htdocs\FIN Travel\FIN-Travel-main\offers\*.jpg');
 $total_images = count($images);
 
 // Get the images for the current page
