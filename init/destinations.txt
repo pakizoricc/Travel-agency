@@ -1,0 +1,90 @@
+Ankara
+Ada Bojana
+Atina
+Amsterdam
+Antalija
+Beograd
+Banja Luka
+Bar
+Barselona
+Berlin
+Bern
+Beč
+Bolonja
+Bordo
+Bratislava
+Brisel
+Bukurešt
+Budimpešta
+Burgas
+Budva
+Dablin
+Dubrovnik
+Dortmund
+Drvar
+Edinburg
+Firenca
+Herceg Novi
+Istanbul
+Igalo
+Ivanjica
+Izmir
+Jagodina
+Jedrene
+Kišinjev
+Kijev
+Kraljevo
+Krakov
+Kragujevac
+Kruševac
+Ljubljana
+Lisabon
+Liverpul
+London
+Madrid
+Maribor
+Marsej
+Minhen
+Minsk
+Milano
+Monte Karlo
+Moskva
+Mostar
+Napulj
+Nica
+Novi Sad
+Niš
+Nikozija
+Oslo
+Ohrid
+Pariz
+Padova
+Podgorica
+Prag
+Prolom Banja
+Rim
+Roterdam
+Raška
+Sarimsakli
+Sankt Petersburg
+Sarajevo
+Skoplje
+Solun
+Sofija
+Split
+Sremska Mitrovica
+Stokhlom
+Subotica
+Temišvar
+Tirana
+Toskana
+Trebinje
+Udine
+Varšava
+Valensija
+Vatikan
+Venecija
+Višegrad
+Vićenca
+Zagreb
+Zrenjanin
