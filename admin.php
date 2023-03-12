@@ -12,11 +12,17 @@
     <style>
       body {
         background-color: lightblue;
+        color: #666666;
+        font-size: 14px;
+        font-family: 'Raleway', sans-serif;
+        line-height: 1.80857;
+        font-weight: bold;
       }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" data-bs-theme="dark"
+    style="font-family: Arial, Helvetica, sans-serif;">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="Screenshot 2023-01-19 021232.png" alt="Bootstrap" width="70" height="35">
@@ -27,39 +33,24 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#" 
-                style="font-family: Arial, Helvetica, sans-serif;">Početna</a>
+                <a class="nav-link active" aria-current="page" href="pocetna.php" 
+                style="font-weight: bold;">Početna</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" style="font-family: Arial, Helvetica, sans-serif;">Pretraga</a>
+                <a class="nav-link" href="pretraga.php" style="font-weight: bold;">Pretraga</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" 
-                data-bs-toggle="dropdown" aria-expanded="false" style="font-family: Arial, Helvetica, sans-serif;">
-                  Upravljanje korisnicima
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#" 
-                    style="font-family: Arial, Helvetica, sans-serif;">Dodaj novog korisnika</a></li>
-                  <li><a class="dropdown-item" href="#" 
-                    style="font-family: Arial, Helvetica, sans-serif;">Pregled trenutnih korisnika</a></li>
-                </ul>
                 <li class="nav-item">
-                  <a class="nav-link ms-auto" href="#" 
-                  style="font-family: Arial, Helvetica, sans-serif;">Odjavi se</a>
+                  <a class="nav-link ms-auto" href="prijava.php" style="font-weight: bold;">Uloguj se</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link ms-auto" href="registracija.php" style="font-weight: bold;">Registracija</a>
                 </li>
               </li>
-              
-             
-            
-            <!--
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>-->
+            </ul>
           </div>
         </div>
-      </nav>
+    </nav>
 
 
       <div class="container " style="min-height: 500px; padding-top: 100px;">
@@ -413,24 +404,28 @@
                 </p>
               </div>
                            
-              <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                
-                <h6 class="text-uppercase fw-bold">Nesto</h6>
+              <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+              
+                <h6 class="text-uppercase fw-bold">Društvene mreže</h6>
                 <hr
                     class="mb-4 mt-0 d-inline-block mx-auto"
                     style="width: 60px; background-color: #7c4dff; height: 2px"
-                    />
+                  />
                 <p>
-                  Nesto
+                  <a class="link" href="https://www.facebook.com" target="_BLANK">
+                    <div class="social-image">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    Facebook
+                  </a>
                 </p>
                 <p>
-                  Nesto
-                </p>
-                <p>
-                  Nesto
-                </p>
-                <p>
-                  Nesto
+                  <a class="link" href="https://www.instagram.com" target="_BLANK">
+                    <div class="social-image">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    Instagram
+                  </a>
                 </p>
               </div>
               
@@ -452,9 +447,6 @@
           </div>
         </section>
      
-        
-    
-        
         <div
              class="text-center p-3"
              style="background-color: rgba(0, 0, 0, 0.2)"
