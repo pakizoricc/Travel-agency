@@ -4,20 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADMIN POCETNA</title>
-    <link rel="stylesheet" href="C:\Users\hp\Downloads\bootstrap-5.3.0-alpha1-dist\bootstrap-5.3.0-alpha1-dist\css\bootstrap.css">
+    <title>FINTravel</title>
+    <link rel="icon" type="image/png" href="Screenshot 2023-01-19 021232.png"/>
+    <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist\css\bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="bootstrap-5.3.0-alpha1-dist\js\bootstrap.bundle.js"></script>
     <style>
-      
+      body {
+        background-color: lightblue;
+        color: #666666;
+        font-size: 14px;
+        font-family: 'Raleway', sans-serif;
+        line-height: 1.80857;
+        font-weight: bold;
+      }
     </style>
 </head>
 <body>
-
-    <script src="C:\Users\hp\Downloads\bootstrap-5.3.0-alpha1-dist\bootstrap-5.3.0-alpha1-dist\js\bootstrap.bundle.js"></script>
-  
-    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" data-bs-theme="dark">
+      
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" data-bs-theme="dark"
+    style="font-family: Arial, Helvetica, sans-serif;">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="C:\Users\hp\Desktop\baze2(travel)\Screenshot 2023-01-19 021232.png" alt="Bootstrap" width="70" height="35">
+                <img src="Screenshot 2023-01-19 021232.png" alt="Bootstrap" width="70" height="35">
               </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -25,36 +34,24 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Pocetna</a>
+                <a class="nav-link active" aria-current="page" href="pocetna.php" 
+                style="font-weight: bold;">Početna</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Pretraga</a>
+                <a class="nav-link" href="pretraga.php" style="font-weight: bold;">Pretraga</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Upravljane korisnicima
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Dodaj novog korisnika</a></li>
-                  <li><a class="dropdown-item" href="#">Pregled trenutnih korisnika</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
                 <li class="nav-item">
-                  <a class="nav-link ms-auto" href="#">Odjavi se</a>
+                  <a class="nav-link ms-auto" href="prijava.php" style="font-weight: bold;">Uloguj se</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link ms-auto" href="registracija.php" style="font-weight: bold;">Registracija</a>
                 </li>
               </li>
-              
-             
-            
-            <!--
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>-->
+            </ul>
           </div>
         </div>
-      </nav>
+    </nav>
 
 
       <div class="container " style="min-height: 500px; padding-top: 100px;">
@@ -427,7 +424,7 @@
 
       <section class="footer" style="width: 100%; background-color: #1c2331; padding-top: 40px; bottom: 0; text-align: center; text-decoration-color: #fff; ">
         <section class="" style="color: #ccc;">
-          <div class="container text-center text-md-start mt-5" style="">
+          <div class="container text-center text-md-start mt-5">
             
             <div class="row mt-3">
               
@@ -443,53 +440,30 @@
                 </p>
               </div>
               
-    
-              
               <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                
-                <h6 class="text-uppercase fw-bold">Nesto</h6>
-                <hr
-                    class="mb-4 mt-0 d-inline-block mx-auto"
-                    style="width: 60px; background-color: #7c4dff; height: 2px"
-                    />
-                <p>
-                  Nesto
-                </p>
-                <p>
-                  Nesto
-                </p>
-                <p>
-                  Nesto
-                </p>
-                <p>
-                  Nesto
-                </p>
-              </div>
               
-    
-              
-              <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                
-                <h6 class="text-uppercase fw-bold">Nesto</h6>
-                <hr
-                    class="mb-4 mt-0 d-inline-block mx-auto"
-                    style="width: 60px; background-color: #7c4dff; height: 2px"
-                    />
-                <p>
-                  Nesto
-                </p>
-                <p>
-                  Nesto
-                </p>
-                <p>
-                  Nesto
-                </p>
-                <p>
-                  Nesto
-                </p>
-              </div>
-              
-    
+              <h6 class="text-uppercase fw-bold">Društvene mreže</h6>
+              <hr
+                  class="mb-4 mt-0 d-inline-block mx-auto"
+                  style="width: 60px; background-color: #7c4dff; height: 2px"
+                  />
+              <p>
+                <a class="link" href="https://www.facebook.com" target="_BLANK">
+                    <div class="social-image">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    Facebook
+                </a>
+              </p>
+              <p>
+                <a class="link" href="https://www.instagram.com" target="_BLANK">
+                    <div class="social-image">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    Instagram
+                </a>
+              </p>
+            </div>
               
               <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                 
