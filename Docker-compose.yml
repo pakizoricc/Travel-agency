@@ -1,0 +1,65 @@
+version: '3.8'
+services:
+      app:
+         build: .
+         volumes: 
+         - .:/var/www/html/
+         ports:
+         - 8000:8000
+         image: app:php
+         container_name: php_container
+        # command: php -S localhost:8000 -t FIN-Travel-main/
+         #command: bash -c "python manage.py makemigrations & python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+
+         depends_on: 
+         - db
+
+
+      db:
+         container_name: db
+         image: mysql:5.7
+         build:
+             context: mysql
+             dockerfile: Dockerfile   
+         ports: 
+         - 3307:3306
+         restart: always
+         volumes: 
+         - .db-data:/var/lib/mysql
+         - ./mysql/fin_travel.sql:/docker-entrypoint-initdb.d/data.sql
+         environment:
+            MYSQL_DATABASE: fin_travel
+            MYSQL_ROOT_PASSWORD: 1234
+           # PMA_HOST: db
+            
+
+# version: '3.8'
+# services:
+#     app:
+#         build: .
+#         depends_on:
+#             - db
+#         volumes:
+#             - .:/var/www/html/
+#         ports:
+#             - 8000:8000
+#     db:
+#         container_name: db
+#         image: mysql
+#         restart: always
+#         environment:
+#             MYSQL_ROOT_PASSWORD: 1234
+#             MYSQL_DATABASE: fin_travel
+#         ports:
+#             - "9906:3306"
+#     phpmyadmin:
+#       image: phpmyadmin/phpmyadmin
+#       ports:
+#           - '8080:80'
+#       restart: always
+#       environment:
+#           PMA_HOST: db
+#       depends_on:
+#           - db
+
+      
