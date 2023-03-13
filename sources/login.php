@@ -5,16 +5,21 @@ $password = "";
 $errors = array();
 
 $conn = mysqli_connect('localhost', 'root', '', 'fin_travel');
-//Ulogovanje
+// LOGIN USER
 if (isset($_POST['submit'])) {
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $password = isset($_POST['password']) ? mysqli_real_escape_string($conn, $_POST['password']) : '';
   
     if (empty($username)) {
+        header('Location: ../prijava.php');
         array_push($errors, "Korisničko ime nije popunjeno");
+        exit();
     }
     if (empty($password)) {
+        header('Location: ../prijava.php');
         array_push($errors, "Šifra nije postavljena");
+        echo $errors;
+        exit();
     }
   
     if (count($errors) == 0) {
@@ -27,7 +32,9 @@ if (isset($_POST['submit'])) {
           echo "<script>alert('".$_SESSION['username']."');</script>";
           header('location: ../pocetna.php');
         } else {
+            header('Location: ../prijava.php');
             array_push($errors, "Pogrešno ste uneli korisničko ime ili šifru");
+            exit();
         }
     }
 }
