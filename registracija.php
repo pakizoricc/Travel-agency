@@ -8,8 +8,29 @@ if (isset($_SESSION['registration_complete'])) {
   // unset the session variable to prevent the message from displaying again on refresh
   unset($_SESSION['registration_complete']);
 }
-?>
 
+if (isset($_GET['fname-fail']) && $_GET['fname-fail'] === 'true') {
+  echo '<script>window.onload = function() { alert("Ime nije popunjeno!"); }</script>';
+}
+if (isset($_GET['lname-fail']) && $_GET['lname-fail'] === 'true') {
+  echo '<script>window.onload = function() { alert("Prezime nije popunjeno!"); }</script>';
+}
+if (isset($_GET['username-fail']) && $_GET['username-fail'] === 'true') {
+  echo '<script>window.onload = function() { alert("Korisnicko ime nije popunjeno!"); }</script>';
+}
+if (isset($_GET['email-fail']) && $_GET['email-fail'] === 'true') {
+  echo '<script>window.onload = function() { alert("E-mail nije popunjen!"); }</script>';
+}
+if (isset($_GET['pass1-fail']) && $_GET['pass1-fail'] === 'true') {
+  echo '<script>window.onload = function() { alert("Šifra nije popunjena!"); }</script>';
+}
+if (isset($_GET['pass-fail']) && $_GET['pass-fail'] === 'true') {
+  echo '<script>window.onload = function() { alert("Šifre nisu iste!"); }</script>';
+}
+if (isset($_GET['role-fail']) && $_GET['role-fail'] === 'true') {
+  echo '<script>window.onload = function() { alert("Rola nije odabrana!"); }</script>';
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
