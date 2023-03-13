@@ -1,39 +1,50 @@
 <?php
+session_start();
+$title = "";
+$destination = "";
+$trans_type = "";
+$from_date = "";
+$to_date = "";
 
-// Retrieve search parameters from the form
-$naziv = isset($_POST['naziv']) ? $_POST['naziv'] : '';
-$lokacija = isset($_POST['lokacija']) ? $_POST['lokacija'] : '';
-$kontinent = isset($_POST['kontinent']) ? $_POST['kontinent'] : '';
-$prevoz_id = isset($_POST['prevoz_id']) ? $_POST['prevoz_id'] : '';
-$od_datuma = isset($_POST['od_datuma']) ? $_POST['od_datuma'] : '';
-$do_datuma = isset($_POST['do_datuma']) ? $_POST['do_datuma'] : '';
+if(isset($_POST['search'])){
+    // Retrieve search parameters from the form
+    $title = isset($_POST['title']);
+    $destination = isset($_POST['destination']);
+    $trans_type = isset($_POST['trans_type']);
+    $from_date = isset($_POST['from_date']);
+    $to_date = isset($_POST['to_date']);
+}
 
 // Build the SQL query to search for results
-$sql = "SELECT * FROM searches WHERE 1=1";
+$conditions = array();
 
-if (!empty($naziv)) {
-    $sql .= " AND naziv LIKE '%$naziv%'";
+// Build the search conditions based on the user's input
+if (!empty($title)) {
+    $conditions[] = "arangements.title LIKE '%$title%'";
+}
+if (!empty($destination)) {
+    $conditions[] = "arangements.destination LIKE '%$destination%'";
+}
+if (!empty($from_date)) {
+    $conditions[] = "arangements.from_date <= '$from_date'";
+}
+if (!empty($to_date)) {
+    $conditions[] = "arangements.to_date >= '$to_date'";
+}
+if (!empty($trans_type)) {
+    $conditions[] = "arangements.trans_type LIKE '%$trans_type%'";
+}
+// Build the SQL query
+$sql = "SELECT images.*, arangements.* FROM images INNER JOIN arangements ON images.destination = arangements.destination";
+if (!empty($conditions)) {
+    $sql .= " WHERE " . implode(" AND ", $conditions);
 }
 
-if (!empty($lokacija)) {
-    $sql .= " AND lokacija LIKE '%$lokacija%'";
-}
-
-if (!empty($kontinent)) {
-    $sql .= " AND kontinent LIKE '%$kontinent%'";
-}
-
-if (!empty($prevoz_id)) {
-    $sql .= " AND prevoz_id = $prevoz_id";
-}
-
-if (!empty($od_datuma)) {
-    $sql .= " AND datum_polaska >= '$od_datuma'";
-}
-
-if (!empty($do_datuma)) {
-    $sql .= " AND datum_povratka <= '$do_datuma'";
-}
+$_SESSION['title'] = $title;
+$_SESSION['destination'] = $destination;
+$_SESSION['trans_type'] = $trans_type;
+$_SESSION['from_date'] = $from_date;
+$_SESSION['to_date'] = $to_date;
 
 // Execute the query and retrieve the results
 $connection = mysqli_connect('localhost', 'root', '', 'fin_travel');
@@ -45,4 +56,6 @@ if ($result === false) {
     die("Query failed: " . mysqli_error($connection));
 }
 $searches = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+header('Location: ../adminRezultatPretrage.php');
 ?>
