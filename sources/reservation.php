@@ -1,84 +1,48 @@
 <?php
-if(isset($_POST['first_name']) && $_POST['first_name'] !== '') {
+session_start();
+
+$first_name = "";
+$last_name = "";
+$phone_number = "";
+$email = "";
+$num_adults = "";
+$num_kids = "";
+$payment = "";
+
+$conn = mysqli_connect('localhost', 'root', '', 'fin_travel');
+
+if(isset($_POST['prosledi'])){
     $first_name = $_POST['first_name'];
-} else {
-    $first_name = '';
-}
-
-if(isset($_POST['last_name']) && $_POST['last_name'] !== '') {
     $last_name = $_POST['last_name'];
-} else {
-    $last_name = '';
-}
-
-if(isset($_POST['phone_number']) && $_POST['phone_number'] !== '') {
     $phone_number = $_POST['phone_number'];
-} else {
-    $phone_number = '';
-}
-
-if(isset($_POST['email']) && $_POST['email'] !== '') {
     $email = $_POST['email'];
-} else {
-    $email = '';
+    $num_adults = $_POST['num_adults'];
+    $num_kids = $_POST['num_kids'];
+    $payment = $_POST['payment'];
+}   
+
+$query = "INSERT INTO reservation (first_name, last_name, phone_number,
+email, num_adults, num_kids, payment) VALUES (?,  ?,  ?, ?, ?, ?, ?)";
+
+$stmt = mysqli_prepare($conn, $query);
+
+mysqli_stmt_bind_param($stmt, "ssssiis", $first_name, $last_name, $phone_number, $email, $num_adults, $num_kids, $payment);
+
+if (!empty($first_name) && !empty($last_name) && !empty($phone_number) && !empty($email) && !empty($num_adults) 
+&& !empty($num_kids) && !empty($payment)) {
+mysqli_stmt_execute($stmt);
 }
 
-if(isset($_POST['number_1']) && $_POST['number_1'] !== '') {
-    $number_1 = $_POST['number_1'];
-} else {
-    $number_1 = '';
-}
+mysqli_stmt_close($stmt);
+mysqli_close($conn);
 
-if(isset($_POST['number_2']) && $_POST['number_2'] !== '') {
-    $number_2 = $_POST['number_2'];
-} else {
-    $number_2 = '';
-}
+$_SESSION['first_name'] = $first_name;
+$_SESSION['last_name'] = $last_name;
+$_SESSION['phone_number'] = $phone_number;
+$_SESSION['email'] = $email;
+$_SESSION['num_adults'] = $num_adults;
+$_SESSION['num_kids'] = $num_kids;
+$_SESSION['payment'] = $payment;
 
-if(isset($_POST['comment']) && $_POST['comment'] !== '') {
-    $comment = $_POST['comment'];
-} else {
-    $commnet = '';
-}
-
-$sql = "SELECT * FROM reservation WHERE 1=1";
-
-if (!empty($first_name)) {
-    $sql .= " AND first_name LIKE '%$first_name%'";
-}
-
-if (!empty($last_name)) {
-    $sql .= " AND last_name LIKE '%$last_name%'";
-}
-
-if (!empty($phone_number)) {
-    $sql .= " AND phone_number LIKE '%$phone_number%'";
-}
-
-if (!empty($email)) {
-    $sql .= " AND email LIKE '%$email%'";
-}
-
-if (!empty($number_1)) {
-    $sql .= " AND number_1 LIKE '%$number_1%'";
-}
-
-if (!empty($number_2)) {
-    $sql .= " AND number_2 LIKE '%$number_2%'";
-}
-
-if (!empty($comment)) {
-    $sql .= " AND comment LIKE '%$comment%'";
-}
-
-// Execute the query and retrieve the results
-$connection = mysqli_connect('localhost', 'root', '', 'fin_travel');
-if (!$connection) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-$result = mysqli_query($connection, $sql);
-if ($result === false) {
-    die("Query failed: " . mysqli_error($connection));
-}
-$reservation = mysqli_fetch_all($result, MYSQLI_ASSOC);
+header('Location: ../admin.php');
 ?>
