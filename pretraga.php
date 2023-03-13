@@ -75,7 +75,7 @@
                     <div class="mb-2">
                       <label id="naziv-label" for="naziv-input" class="form-label">Naziv aranžmana</label>
                       <div class="input-group">
-                        <input type="text" class="form-control" id="naziv-input" name="title" placeholder="Naziv aranžmana" value=<?php echo isset($title) ? $title : ''; ?>>
+                        <input type="text" class="form-control" id="naziv-input" name="title" placeholder="Naziv aranžmana" >
                       </div>
                     </div>
                   </div>
@@ -94,7 +94,7 @@
                           placeholder="Lokacija"
                           name = "destination"
                           aria-describedby="lokacija-label"
-                          value=<?php echo isset($destination) ? $destination : ''; ?>/>
+                          />
                           <datalist id="lokacija-options"></datalist>
                         </div>
                       </div>
@@ -115,7 +115,7 @@
                           placeholder="tip prevoza"
                           name="trans_type"
                           aria-describedby="transport-label"
-                          value=<?php echo isset($trans_type) ? $trans_type : ''; ?>/>
+                          />
                           <datalist id="transport-options"></datalist>
                       </div>      
                     </div>
@@ -138,7 +138,6 @@
                                   id="departure-date-input"
                                   aria-describedby="departure-date-label"
                                   name="from_date"
-                                  value=<?php echo isset($from_date) ? $from_date : ''; ?>
                                 />
                               </div>
                             </div>
@@ -152,7 +151,6 @@
                                   id="return-date-input"
                                   name="to_date"
                                   aria-describedby="return-date-label"
-                                  value=<?php echo isset($to_date) ? $to_date : ''; ?>
                                 />
                               </div>
                             </div>
