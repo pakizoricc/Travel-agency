@@ -1,11 +1,11 @@
 <?php
 
-// Define an array of data for each column
+//za arangements
 $titles = array("Sunset", "Beach", "Mountain", "Cityscape", "Forest");
-$travelDates = array("2022-05-01", "2022-06-15", "2022-07-10", "2022-08-20", "2022-09-05");
-$transTypes = array("bus", "train", "plane", "boat", "car");
+$from_dates = array("2022-05-01", "2022-05-03", "2022-05-05", "2022-05-06", "2022-05-07");
+$to_dates = array("2022-05-08", "2022-05-09", "2022-05-10");
+$transTypes = array("autobus", "voz", "avion", "brod", "automobil");
 
-// Open the file in read mode
 $file = fopen('destinations.txt', 'r');
 
 $destinations = array();
@@ -16,6 +16,11 @@ while (!feof($file)) {
 
 fclose($file);
 
+//za accomodation
+$internet_connections = array("ima Wi-Fi", "nema Wi-Fi");
+$room_refriginators = array("ima sobni frižider", "nema sobni frižider");
+
+
 // Connect to the database
 $db = new mysqli("localhost", "root", "", "fin_travel");
 
@@ -24,12 +29,15 @@ if ($db->connect_error) {
     die("Connection failed: " . $db->connect_error);
 }
 
-// Initialize a counter for the number of records inserted
+//broj podataka generisanih u tabele arangements i accomodation
 $numRecordsInserted = 0;
+$numRecordsInserted2 = 0;
 
+//
 $queries = array();
+$queries2 = array();
 
-// Loop through all combinations of data and insert into the table
+//petlja za arangements
 foreach ($titles as $title) {
     foreach ($destinations as $destination){
         
@@ -37,13 +45,15 @@ foreach ($titles as $title) {
             break;
         }
 
-        foreach ($travelDates as $travelDate) {
-            foreach ($transTypes as $transType) {
-                $numDays = rand(2, 10);
-                $priceOffer = round(rand(70, 300) * 10, -1);
-                $sql = "INSERT INTO arangements (title, destination, travel_date, num_days, price_offer, trans_type) VALUES ('$title', '$destination', '$travelDate', $numDays, $priceOffer, '$transType')";
-                array_push($queries, $sql);
-            }       
+        foreach ($from_dates as $from_date) {
+            foreach ($to_dates as $to_date) {
+                foreach ($transTypes as $transType) {
+                    $numDays = rand(2, 10);
+                    $priceOffer = round(rand(70, 300) * 10, -1);
+                    $sql = "INSERT INTO arangements (title, destination, from_date, to_date, num_days, price_offer, trans_type) VALUES ('$title', '$destination', '$from_date', '$to_date', '$numDays', '$priceOffer', '$transType')";
+                    array_push($queries, $sql);
+                }  
+            }     
         }
     }    
 }
@@ -58,12 +68,31 @@ foreach($queries as $query){
     }
 }
 
+//petlja za accomodation
+foreach ($internet_connections as $internet_connection) {
+    foreach ($room_refriginators as $room_refriginator){
+        $category = rand(1,5);
+        $sql2 = "INSERT INTO accomodation (category, internet_connection, room_refriginator) VALUES ('$category','$internet_connection','$room_refriginator');";
+        array_push($queries2, $sql2);
+    }
+}
+
+shuffle($queries2);
+
+foreach($queries2 as $query2){
+    if ($db->query($query2) === TRUE) {
+        $numRecordsInserted2++;
+    } else {
+        echo "Error inserting record: " . $db->error;
+    }
+}
 
 
-// Print the total number of records inserted
-echo "Total number of records inserted: " . $numRecordsInserted;
+//ukupan broj inicijalizovanih podataka
+echo "Total number of records inserted in arangements: " . $numRecordsInserted;
+echo "<br>";
+echo "Total number of records inserted in accomodation: " . $numRecordsInserted2;
 
-// Close the database connection
 $db->close();
 
 ?>
