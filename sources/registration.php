@@ -1,57 +1,92 @@
 <?php
 session_start();
 
+// initializing variables
 $first_name = "";
 $last_name = "";
 $username = "";
 $email = "";
 $password_1 = "";
 $password_2 = "";
+$role = "";
 $errors = array(); 
 
-//konekcija ka bazi
+// connect to the database
 $conn = mysqli_connect('localhost', 'root', '', 'fin_travel');
 
-//registracija
+// REGISTER USER
 if (isset($_POST['reg_user'])) {
-  //ulazni podaci
+  //kupi sve vrednosti unete u polja
   $first_name = $_POST['first_name'];
   $last_name = isset($_POST['last_name']) ? $_POST['last_name'] : "";
   $username = $_POST['username'];
   $email = $_POST['email'];
   $password_1 = $_POST['password_1'];
   $password_2 = $_POST['password_2'];
-  
-  if (empty($first_name)) { $errors['first_name'] = "Ime nije popunjeno"; }
-  if (empty($last_name)) { $errors['last_name'] = "Prezime nije popunjeno"; }
-  if (empty($username)) { $errors['username'] = "Korisničko ime nije popunjeno"; }
-  if (empty($email)) { $errors['email'] = "E-mail nije popunjen"; }
-  if (empty($password_1)) { $errors['password'] = "Šifra nije postavljena"; }
+  $role = $_POST['role'];
+  // polja moraju biti popunjena
+  if (empty($first_name)) { 
+    header('Location: ../registracija.php');
+    array_push($errors, "Ime nije popunjeno");
+    exit();
+  }
+  if (empty($last_name)) { 
+    header('Location: ../registracija.php');
+    array_push($errors, "Prezime nije popunjeno");
+    exit();
+  }
+  if (empty($username)) { 
+    header('Location: ../registracija.php');
+    array_push($errors, "Korisničko ime nije popunjeno");
+    exit();
+  }
+  if (empty($email)) {
+    header('Location: ../registracija.php');
+    array_push($errors, "E-mail nije popunjen");
+    exit();
+  }
+  if (empty($password_1)) {
+    header('Location: ../registracija.php');
+    array_push($errors, "Šifra nije popunjena");
+    exit();
+  }
   if ($password_1 != $password_2) {
-    $errors['password_match'] = "Šifre se ne poklapaju";
+    header('Location: ../registracija.php');
+    array_push($errors, "Šifre se ne poklapaju");
+    exit();
+  }
+  if (empty($role)) { 
+    header('Location: ../registracija.php');
+    array_push($errors, "Niste odabrali rolu");
+    exit();
   }
 }
 
-  //da li postoji nalog vec, provera na osnovu username i email polja
+  //proverava u bazi da li vec postoje postojeci username i email
   $user_check_query = "SELECT * FROM users WHERE username='$username' OR email='$email' LIMIT 1";
   $result = mysqli_query($conn, $user_check_query);
   $user = mysqli_fetch_assoc($result);
 
   if (count($errors) == 0) {
-    //hash-ovanje sifre
+    //enkripcija sifre
     $password = md5($password_1);
     
-    //unos podataka korisnika u bazu
-    $query = "INSERT INTO users (first_name, last_name, username, email, password) 
-              VALUES('$first_name', '$last_name', '$username', '$email', '$password')";
+    //unos u tabelu users nakon uspesne registracije
+    $query = "INSERT INTO users (first_name, last_name, username, email, password, role) 
+              VALUES('$first_name', '$last_name', '$username', '$email', '$password', '$role')";
     mysqli_query($conn, $query);
   
     $_SESSION['username'] = $username;
+    $_SESSION['role'] = $role;
     $_SESSION['registration_complete'] = true;
-    $_SESSION['success'] = "You are now logged in";
+    $_SESSION['success'] = "Uspesno ste se registrovali";
   
-    //redirekcija na pocetna.php
-    header('location: ../pocetna.php');
+    //redirekcija ka stranici u zavisnosti od role
+    if ($role == "admin"){
+      header('Location: ../adminPregledP.php');
+    } else {
+      header('Location: ../pocetna.php');
+    }
     exit();
   }
 ?>
