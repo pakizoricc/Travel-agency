@@ -8,11 +8,11 @@ $to_date = "";
 
 if(isset($_POST['search'])){
     // Retrieve search parameters from the form
-    $title = isset($_POST['title']);
-    $destination = isset($_POST['destination']);
-    $trans_type = isset($_POST['trans_type']);
-    $from_date = isset($_POST['from_date']);
-    $to_date = isset($_POST['to_date']);
+    $title = $_POST['title'];
+    $destination = $_POST['destination'];
+    $trans_type = $_POST['trans_type'];
+    $from_date = $_POST['from_date'];
+    $to_date = $_POST['to_date'];
 }
 
 // Build the SQL query to search for results
@@ -20,22 +20,23 @@ $conditions = array();
 
 // Build the search conditions based on the user's input
 if (!empty($title)) {
-    $conditions[] = "arangements.title LIKE '%$title%'";
+    $conditions[] = "LOWER(title) LIKE LOWER('%$title%')";
 }
 if (!empty($destination)) {
-    $conditions[] = "arangements.destination LIKE '%$destination%'";
+    $conditions[] = "LOWER(destination) LIKE LOWER('%$destination%')";
 }
 if (!empty($from_date)) {
-    $conditions[] = "arangements.from_date <= '$from_date'";
+    $conditions[] = " from_date <= '$from_date'";
 }
 if (!empty($to_date)) {
-    $conditions[] = "arangements.to_date >= '$to_date'";
+    $conditions[] = " to_date >= '$to_date'";
 }
 if (!empty($trans_type)) {
-    $conditions[] = "arangements.trans_type LIKE '%$trans_type%'";
+    $conditions[] = "LOWER(trans_type) LIKE LOWER('%$trans_type%')";
 }
 // Build the SQL query
-$sql = "SELECT images.*, arangements.* FROM images INNER JOIN arangements ON images.destination = arangements.destination";
+$sql = "SELECT * FROM arangements";
+
 if (!empty($conditions)) {
     $sql .= " WHERE " . implode(" AND ", $conditions);
 }
@@ -55,7 +56,10 @@ $result = mysqli_query($connection, $sql);
 if ($result === false) {
     die("Query failed: " . mysqli_error($connection));
 }
-$searches = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$searches = mysqli_fetch_all($result, MYSQLI_NUM);
+$_SESSION['searches'] = $searches;
 
+// Redirect the user to the search results page
 header('Location: ../adminRezultatPretrage.php');
+exit();
 ?>
