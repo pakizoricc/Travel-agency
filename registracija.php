@@ -23,7 +23,17 @@ if (isset($_SESSION['registration_complete'])) {
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="bootstrap-5.3.0-alpha1-dist\js\bootstrap.bundle.js"></script>
   </head>
-<body>    
+  <style>
+    body {
+        background-color: lightblue;
+        color: #666666;
+        font-size: 14px;
+        font-family: 'Raleway', sans-serif;
+        line-height: 1.80857;
+        font-weight: bold;
+    }
+  </style>
+  <body>    
     <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" data-bs-theme="dark"
     style="font-family: Arial, Helvetica, sans-serif;">
         <div class="container">
@@ -108,9 +118,22 @@ if (isset($_SESSION['registration_complete'])) {
                       <label class="form-label" for="typePasswordX-2" 
                       style="font-family: Arial, Helvetica, sans-serif;">Potvrdi lozinku</label>
                     </div>
+
+                    <div class="radio-buttons">
+                      <label for="role" style="font-family: Arial, Helvetica, sans-serif; 
+                      font-weight:bold; margin-right: 10px;">Odaberi rolu:</label>
+                      <label style="font-family: Arial, Helvetica, sans-serif; margin-right: 5px;">
+                        <input type="radio" name="role" value="user"
+                        <?php if(isset($_SESSION['role']) && $_SESSION['role'] == "user") echo " checked"; ?>>Korisnik
+                      </label>
+                      <label style="font-family: Arial, Helvetica, sans-serif;">
+                        <input type="radio" name="role" value="admin"
+                        <?php if(isset($_SESSION['role']) && $_SESSION['role'] == "admin") echo " checked"; ?>>Administrator
+                      </label>
+                    </div>
       
                     <button class="btn btn-primary btn-lg btn-block" type="submit" 
-                    style="font-family: Arial, Helvetica, sans-serif;" name="reg_user">Registruj se</button>
+                    style="font-family: Arial, Helvetica, sans-serif; margin-top: 30px" name="reg_user">Registruj se</button>
                   </div>
                 </div>
               </div>
@@ -119,7 +142,7 @@ if (isset($_SESSION['registration_complete'])) {
         </section>
       </form>
 
-      <section class="footer" style="width: 100%; background-color: #1c2331; padding-top: 80px; margin-top: 180px; 
+      <section class="footer" style="width: 100%; background-color: #1c2331; padding-top: 80px; margin-top: 240px; 
       bottom: 0; text-align: center; text-decoration-color: #fff;">
         <section class="" style="color: #ccc;">
           <div class="container text-center text-md-start mt-5">
@@ -128,63 +151,42 @@ if (isset($_SESSION['registration_complete'])) {
               
               <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                 
-                <h6 class="text-uppercase fw-bold" style="font-family: Arial, Helvetica, sans-serif;">FIN travel</h6>
+                <h6 class="text-uppercase fw-bold" style="font-family: Arial, Helvetica, sans-serif;">Opis</h6>
                 <hr
                     class="mb-4 mt-0 d-inline-block mx-auto"
                     style="width: 60px; background-color: #7c4dff; height: 2px"
                     />
                 <p style="font-family: Arial, Helvetica, sans-serif;">
-                  pavlezoric2000@gmail.com
+                  FIN Travel - ponude za letovanje su savršen izbor 
+                  za sve one koji hoće spoj odmora, provoda i uživanja na nekoj od fenomenalnih 
+                  letnjih destinacija koje imamo u ponudi. 
                 </p>
               </div>
-              
-    
-              
+                 
               <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                
-                <h6 class="text-uppercase fw-bold">Nesto</h6>
+              
+                <h6 class="text-uppercase fw-bold">Društvene mreže</h6>
                 <hr
                     class="mb-4 mt-0 d-inline-block mx-auto"
                     style="width: 60px; background-color: #7c4dff; height: 2px"
-                    />
+                  />
                 <p>
-                  Nesto
+                  <a class="link" href="https://www.facebook.com" target="_BLANK">
+                    <div class="social-image">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    Facebook
+                  </a>
                 </p>
                 <p>
-                  Nesto
-                </p>
-                <p>
-                  Nesto
-                </p>
-                <p>
-                  Nesto
-                </p>
-              </div>
-              
-    
-              
-              <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                
-                <h6 class="text-uppercase fw-bold">Nesto</h6>
-                <hr
-                    class="mb-4 mt-0 d-inline-block mx-auto"
-                    style="width: 60px; background-color: #7c4dff; height: 2px"
-                    />
-                <p>
-                  Nesto
-                </p>
-                <p>
-                  Nesto
-                </p>
-                <p>
-                  Nesto
-                </p>
-                <p>
-                  Nesto
+                  <a class="link" href="https://www.instagram.com" target="_BLANK">
+                    <div class="social-image">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    Instagram
+                  </a>
                 </p>
               </div>
-              
-    
               
               <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                 
