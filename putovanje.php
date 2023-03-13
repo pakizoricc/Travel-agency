@@ -1,11 +1,26 @@
+<?php
+// Retrieve the image URL from the query string
+if (isset($_GET['img'])) {
+    $img_url = urldecode($_GET['img']);
+} else {
+    // If the image URL is not specified, redirect back to the previous page
+    header('Location: pocetna.php');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pocetna</title>
-    <link rel="stylesheet" href="C:\Users\hp\Downloads\bootstrap-5.3.0-alpha1-dist\bootstrap-5.3.0-alpha1-dist\css\bootstrap.css">
+    <title>FINTravel</title>
+    <link rel="icon" type="image/png" href="Screenshot 2023-01-19 021232.png"/>
+    <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist\css\bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="bootstrap-5.3.0-alpha1-dist\js\bootstrap.bundle.js"></script>
+    
     <style>
       
 
@@ -95,44 +110,46 @@
      font-weight: 500;
   }
 
+  .carousel-img {
+  width: 100%;
+  height: 350px; /* Change this value to set the height of the images */
+  object-fit: cover;
+  }
 
-    
-    
+
     </style>
 </head>
 <body>
-
-    <script src="C:\Users\hp\Downloads\bootstrap-5.3.0-alpha1-dist\bootstrap-5.3.0-alpha1-dist\js\bootstrap.bundle.js"></script>
   
-    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" data-bs-theme="dark">
-      <div class="container">
-          <a class="navbar-brand" href="#">
-              <img src="C:\Users\hp\Desktop\baze2(travel)\Screenshot 2023-01-19 021232.png" alt="Bootstrap" width="70" height="35">
-            </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Pocetna</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pretraga</a>
-            </li>
-            
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" data-bs-theme="dark"
+    style="font-family: Arial, Helvetica, sans-serif;">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="Screenshot 2023-01-19 021232.png" alt="Bootstrap" width="70" height="35">
+              </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link ms-auto" href="#">Prijavi se</a>
+                <a class="nav-link active" aria-current="page" href="pocetna.php" 
+                style="font-weight: bold;">Početna</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="pretraga.php" style="font-weight: bold;">Pretraga</a>
+              </li>
+              <li class="nav-item dropdown">
+                <li class="nav-item">
+                  <a class="nav-link ms-auto" href="prijava.php" style="font-weight: bold;">Uloguj se</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link ms-auto" href="registracija.php" style="font-weight: bold;">Registracija</a>
+                </li>
               </li>
             </ul>
-
-            
-           
-          
-          
-         
+          </div>
         </div>
-      </div>
     </nav>
 
 
@@ -144,27 +161,28 @@
     
 
 
-
-        <div id="about"  class="about" style="margin-top:10px;margin-bottom:100px;padding-top: 70px; padding-bottom: 70px;">
-          <div class="container-fluid">
-             <div class="row d_flex">
-                <div class="col-md-7">
-                   <div class="about_img">
-                      <figure><img src="C:\Users\hp\Desktop\baze2(travel)\250px-Damavand_in_winter.jpg" alt="#"/></figure>
-                   </div>
+        
+          <div id="about" class="about" style="margin-top:10px;margin-bottom:100px;padding-top: 70px; padding-bottom: 70px;">
+            <div class="container-fluid">
+                <div class="row d_flex">
+                  <div class="col-md-7">
+                     <div class="about_img">
+                        <figure><img src="<?php echo $img_url; ?>" alt="Image"></figure>
+                     </div>
+                  </div>
+                    <div class="col-md-5">
+                       <div class="titlepage">
+                          <?php include 'sources/offerinfo.php' ?>
+                          <p><?php echo 'Destinacija: ' . $destination; ?></p>
+                          <p><?php echo 'Način prevoza: ' . $trans_type; ?></p>
+                          <p><span class="blu" ><?php echo 'Broj dana: ' . $num_days; ?></span></p>
+                          <p><span class="red" style="font-size: 25px;"><?php echo 'Cena: ' . $price_offer . ' evra'; ?></span></p>
+                          <a class="read_more" style="text-decoration: none;" href="rezervisi.php">Rezerviši</a>
+                       </div>
+                    </div>
                 </div>
-                <div class="col-md-5">
-                   <div class="titlepage">
-                      <h2>Naziv <span class="blu">aranzmana</span></h2>
-                      <p>lokacije navedene</p>
-                      <p>Nacin prevoza<span class="blu" > koliko dana</span></p>
-                      <p><span class="red" style="font-size: 25px;">cena</span></p>
-                      <a class="read_more" style="text-decoration: none;">Rezervisi</a>
-                   </div>
-                </div>
-             </div>
-             </div>
-        </div>
+            </div>
+          </div>
 
 
              <div id="about"  class="about" style="padding-top: 70; padding-bottom: 70; box-shadow: none;">
@@ -172,11 +190,13 @@
                  <div class="row d_flex">
                     <div class="col-md-6">
                       <div class="titlepage">
-                      <h2>Opis smestaja </h2>
-                      <p>Ime smestajnog objekta<span class="bla" >, kategorija u vidu broja zvezdica</span></p>
-                      <p>Propratni detalji<span class="blu" > :</span></p>
+                        <?php include 'sources/accomodation.php' ?>
+                        <h2>Opis smeštaja </h2>
+                        <p>Ime smeštajnog objekta</p>
+                        <p><span class="bla" ><?php echo 'Ocena smeštaja: ' . $category; ?></span></p>
+                        <p>Propratni detalji<span class="blu" ><?php echo ': ' . $internet_connection . ', ' . $room_refriginator; ?></span></p>
                       
-                      <a class="read_more" style="text-decoration: none; width: fit-content; max-width: fit-content; padding: 15px; " aria-disabled="true">Napomena u vezi putovanja</a>
+                        <a class="read_more" style="text-decoration: none; width: fit-content; max-width: fit-content; padding: 15px; " aria-disabled="true">Napomena u vezi putovanja</a>
                       </div>
                        
                           
@@ -195,27 +215,25 @@
                           </div>
                           <div class="carousel-inner">
                             <div class="carousel-item active">
-                              <img src="C:\Users\hp\Desktop\baze2(travel)\standard-soba-3.jpg" class="d-block w-100" alt="...">
-                              \
+                              <img src="apartments\330006535.jpg" class="d-block w-100 carousel-img">
+
                             </div>
                             <div class="carousel-item">
-                              <img src="C:\Users\hp\Desktop\baze2(travel)\amberlair-crowdsourced-crowdfunded-boutique-hotel-ION-Hotel-room.jpg" class="d-block w-100" alt="...">
-                              
+                              <img src="apartments\amberlair-crowdsourced-crowdfunded-boutique-hotel-ION-Hotel-room.jpg" 
+                              class="d-block w-100 carousel-img">
+                    
                             </div>
-                            <div class="carousel-item">
-                              <img src="C:\Users\hp\Desktop\baze2(travel)\330006535.jpg" class="d-block w-100" alt="...">
+                            <div class="carousel-item active">
+                              <img src="apartments\image3777.png" class="d-block w-100 carousel-img">
                               
                             </div>
                             <div class="carousel-item active">
-                              <img src="C:\Users\hp\Desktop\baze2(travel)\image3777.png" class="d-block w-100" alt="...">
+                              <img src="apartments\Iris-Bazen-5.jpg" class="d-block w-100 carousel-img">
                               
                             </div>
                             <div class="carousel-item active">
-                              <img src="C:\Users\hp\Desktop\baze2(travel)\Iris-Bazen-5.jpg" class="d-block w-100" alt="...">
-                              
-                            </div>
-                            <div class="carousel-item active">
-                              <img src="C:\Users\hp\Desktop\baze2(travel)\amberlair-crowdsourced-crowdfunded-boutique-hotel-ION-Hotel-room.jpg" class="d-block w-100" alt="...">
+                              <img src="apartments\amberlair-crowdsourced-crowdfunded-boutique-hotel-ION-Hotel-room.jpg" 
+                              class="d-block w-100 carousel-img">
                               
                             </div>
                           </div>
@@ -234,106 +252,60 @@
                  </div>
                  </div>
 
-
-
-
-
-
-          
        </div>
         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       </div>
-
-
-
-
-
-
-
-
-
-
 
     </div>
 
         
         
-    <section class="footer" style="width: 100%; background-color: #1c2331; padding-top: 40px; bottom: 0; text-align: center; text-decoration-color: #fff; ">
+    <section class="footer" style="width: 100%; background-color: #1c2331; font-weight: bold; font-family:Arial, Helvetica, sans-serif;
+     margin-top: 150px; padding-top: 40px; bottom: 0; text-align: center; text-decoration-color: #fff; ">
         <section class="" style="color: #ccc;">
-          <div class="container text-center text-md-start mt-5" style="">
+          <div class="container text-center text-md-start mt-5">
             
             <div class="row mt-3">
               
               <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                
-                <h6 class="text-uppercase fw-bold">FIN travel</h6>
+              
+                <h6 class="text-uppercase fw-bold">Opis</h6>
                 <hr
                     class="mb-4 mt-0 d-inline-block mx-auto"
                     style="width: 60px; background-color: #7c4dff; height: 2px"
                     />
                 <p>
-                  neki mali opis
+                    FIN Travel - ponude za letovanje su savršen izbor 
+                    za sve one koji hoće spoj odmora, provoda i uživanja na nekoj od fenomenalnih 
+                    letnjih destinacija koje imamo u ponudi. 
                 </p>
               </div>
-              
-    
-              
+            
+  
+            
               <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                
-                <h6 class="text-uppercase fw-bold">Nesto</h6>
+              
+                <h6 class="text-uppercase fw-bold">Društvene mreže</h6>
                 <hr
                     class="mb-4 mt-0 d-inline-block mx-auto"
                     style="width: 60px; background-color: #7c4dff; height: 2px"
-                    />
+                  />
                 <p>
-                  Nesto
+                  <a class="link" href="https://www.facebook.com" target="_BLANK">
+                    <div class="social-image">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    Facebook
+                  </a>
                 </p>
                 <p>
-                  Nesto
-                </p>
-                <p>
-                  Nesto
-                </p>
-                <p>
-                  Nesto
-                </p>
-              </div>
-              
-    
-              
-              <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                
-                <h6 class="text-uppercase fw-bold">Nesto</h6>
-                <hr
-                    class="mb-4 mt-0 d-inline-block mx-auto"
-                    style="width: 60px; background-color: #7c4dff; height: 2px"
-                    />
-                <p>
-                  Nesto
-                </p>
-                <p>
-                  Nesto
-                </p>
-                <p>
-                  Nesto
-                </p>
-                <p>
-                  Nesto
+                  <a class="link" href="https://www.instagram.com" target="_BLANK">
+                    <div class="social-image">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    Instagram
+                  </a>
                 </p>
               </div>
               
