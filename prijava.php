@@ -1,3 +1,20 @@
+<?php
+if (isset($_GET['username-fail']) && $_GET['username-fail'] === 'true') {
+  echo '<script>window.onload = function() { alert("Korisničko ime nije popunjeno!"); }</script>';
+}
+
+if (isset($_GET['password-fail']) && $_GET['password-fail'] === 'true') {
+  echo '<script>window.onload = function() { alert("Šifra nije popunjena!"); }</script>';
+}
+
+if (isset($_GET['role-fail']) && $_GET['role-fail'] === 'true') {
+  echo '<script>window.onload = function() { alert("Niste odabrali rolu!"); }</script>';
+}
+
+if (isset($_GET['error-fail']) && $_GET['error-fail'] === 'true') {
+  echo '<script>window.onload = function() { alert("Uneli ste pogrešno podatke!"); }</script>';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
