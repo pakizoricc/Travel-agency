@@ -20,9 +20,14 @@
 
 
       a:active { text-decoration: none; }
-    
-    
-
+      body{
+        background-color: lightblue;
+        color: #666666;
+        font-size: 14px;
+        font-family: 'Raleway', sans-serif;
+        line-height: 1.80857;
+        font-weight: bold;
+      }
     </style>
 </head>
 <body>
@@ -76,50 +81,87 @@
             <h1>Pregled svih putovanja</h1>
           </div>
         </div>
-
+        
           <div class = "pagination">
-            <div class = "image-container">
-
-            </div>
-          </div>
-
-          <div class="image-container" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; ">
-            <div class="pagination" style="display: flex; align-items: center; background-color: #fff; color: #383838; padding: 10px 40px;border-radius: 6px;">
-              <button class="btn1" style="display: inline-flex;
-              align-items: center;
-              font-size: 15px;
-              font-weight: 500;
-              color: #383838;
-              background: transparent;
-              outline: none;
-              border: none;
-              cursor: pointer;" onclick="backBtn">prev</button>
+            
               <?php
-                /*five images per row, 25 images in one page*/
-                $images = include 'sources\pagination.php';
-                for($i = 0; $i < count($images); $i++){
-                  if($i % 5 == 0){
-                    echo '<div class = "row">';
-                    echo '<div class = "image">';
-                    echo '<img src="' . $images[$i] . '" alt="Image">';
-                    echo '</div>';
+                  // include the pagination.php file
+                  include 'sources/pag.php';
+                  include 'sources/image_mapper.php';
+
+                  $images = array();
+
+                  foreach($arrs as $row){
+                    array_push($images, getImageByDestination(trim($row['destination']))[0]);
                   }
-                  if (($i + 1) % 5 == 0 || $i == count($images) - 1){
+
+                  // Five images per row
+                  for ($i = 0; $i < count($images); $i++) {
+                    if ($i % 5 == 0) {
+                      echo '<div class="row">';
+                    }
+                    echo '<div class="col">';
+                    echo '<a href = "putovanje.php?img=' . urlencode($images[$i]) . '"><img src="' . $images[$i] . '" alt="Image" width="150" height="150"></a>';
                     echo '</div>';
+                    if (($i + 1) % 5 == 0 || $i == count($images) - 1) {
+                      echo '</div>';
+                    }
                   }
-                }
+
               ?>
-              <button class="btn2" style="display: inline-flex;
-              align-items: center;
-              font-size: 15px;
-              font-weight: 500;
-              color: #383838;
-              background: transparent;
-              outline: none;
-              border: none;
-              cursor: pointer;" onclick="nextBtn">next</button>
+
             </div>
-          </div>
+
+            <div class="pagination-controls" style="margin-top: 70px; margin-left: 530px;">
+              <?php if ($current_page > 1): ?>
+                <button class="btn1" style="display: inline-flex;
+                  align-items: center;
+                  font-size: 15px;
+                  font-weight: 500;
+                  color: #383838;
+                  background: transparent;
+                  outline: none;
+                  border: none;
+                  cursor: pointer;" onclick="location.href='?page=<?php echo $current_page - 1; ?>'">prev</button>
+                <button class="btn1" style="display: inline-flex;
+                  align-items: center;
+                  font-size: 15px;
+                  font-weight: 500;
+                  color: #383838;
+                  background: transparent;
+                  outline: none;
+                  border: none;
+                  cursor: pointer;" onclick="location.href='?page=1'">1</button>
+                <?php if ($current_page > 2): ?>
+                  <span>...</span>
+                <?php endif; ?>
+              <?php endif; ?>
+  
+              <?php if ($current_page < $total_pages): ?>
+                <?php if ($current_page < $total_pages - 1): ?>
+                  <span>...</span>
+                <?php endif; ?>
+                <button class="btn1" style="display: inline-flex;
+                  align-items: center;
+                  font-size: 15px;
+                  font-weight: 500;
+                  color: #383838;
+                  background: transparent;
+                  outline: none;
+                  border: none;
+                  cursor: pointer;" onclick="location.href='?page=<?php echo $total_pages; ?>'"><?php echo $total_pages; ?></button>
+                <button class="btn1" style="display: inline-flex;
+                  align-items: center;
+                  font-size: 15px;
+                  font-weight: 500;
+                  color: #383838;
+                  background: transparent;
+                  outline: none;
+                  border: none;
+                  cursor: pointer;" onclick="location.href='?page=<?php echo $current_page + 1; ?>'">next</button>
+              <?php endif; ?>
+            </div>
+
         </div>
       </div>
          
@@ -136,13 +178,15 @@
             
             <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
               
-              <h6 class="text-uppercase fw-bold">FIN travel</h6>
+              <h6 class="text-uppercase fw-bold">Opis</h6>
               <hr
                   class="mb-4 mt-0 d-inline-block mx-auto"
                   style="width: 60px; background-color: #7c4dff; height: 2px"
                   />
               <p>
-                neki mali opis
+                  FIN Travel - ponude za letovanje su savršen izbor 
+                  za sve one koji hoće spoj odmora, provoda i uživanja na nekoj od fenomenalnih 
+                  letnjih destinacija koje imamo u ponudi. 
               </p>
             </div>
             
@@ -150,45 +194,26 @@
             
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
               
-              <h6 class="text-uppercase fw-bold">Nesto</h6>
+              <h6 class="text-uppercase fw-bold">Društvene mreže</h6>
               <hr
                   class="mb-4 mt-0 d-inline-block mx-auto"
                   style="width: 60px; background-color: #7c4dff; height: 2px"
                   />
               <p>
-                Nesto
+                <a class="link" href="https://www.facebook.com" target="_BLANK">
+                    <div class="social-image">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    Facebook
+                </a>
               </p>
               <p>
-                Nesto
-              </p>
-              <p>
-                Nesto
-              </p>
-              <p>
-                Nesto
-              </p>
-            </div>
-            
-  
-            
-            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-              
-              <h6 class="text-uppercase fw-bold">Nesto</h6>
-              <hr
-                  class="mb-4 mt-0 d-inline-block mx-auto"
-                  style="width: 60px; background-color: #7c4dff; height: 2px"
-                  />
-              <p>
-                Nesto
-              </p>
-              <p>
-                Nesto
-              </p>
-              <p>
-                Nesto
-              </p>
-              <p>
-                Nesto
+                <a class="link" href="https://www.instagram.com" target="_BLANK">
+                    <div class="social-image">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    Instagram
+                </a>
               </p>
             </div>
             
@@ -260,5 +285,3 @@
 </script>
 </body>
 </html>
-
-
