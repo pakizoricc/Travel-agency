@@ -1,3 +1,8 @@
+<?php
+if (isset($_GET['reservation-success']) && $_GET['reservation-success'] === 'true') {
+  echo '<script>window.onload = function() { alert("Rezervacija je uspešno poslata!"); }</script>';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
