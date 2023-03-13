@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,8 +10,17 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="bootstrap-5.3.0-alpha1-dist\js\bootstrap.bundle.js"></script>
 </head>
-<body>
-
+<style>
+  body {
+        background-color: lightblue;
+        color: #666666;
+        font-size: 14px;
+        font-family: 'Raleway', sans-serif;
+        line-height: 1.80857;
+        font-weight: bold;
+  }
+</style>
+  <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" 
     data-bs-theme="dark" style="font-family: Arial, Helvetica, sans-serif;">
         <div class="container">
@@ -41,8 +49,6 @@
         </div>
     </nav>
 
-
- 
     <form action="sources/login.php" method="post">
       <section class="vh-100 " data-bs-theme="light">
         <div class="container py-5 h-100">
@@ -50,26 +56,18 @@
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
               <div class="card shadow-2-strong" style="border-radius: 1rem;">
                 <div class="card-body p-5 text-center">
-      
                   <h3 class="mb-5" style="font-family: Arial, Helvetica, sans-serif;
                   font-weight: bold;">Prijava</h3>
-                  
                   <div class="form-outline mb-4">
-                    <input type="text" name="username" id="typeEmailX-2" class="form-control form-control-lg" />
+                    <input type="text" name="username" id="user" class="form-control form-control-lg" />
                     <label class="form-label" for="typeEmailX-2" style="font-family: Arial, Helvetica, sans-serif;"
-                    value="<?php echo $username; ?>">Korisničko ime</label>
+                    value="<?php echo isset($username) ? $username : ''; ?>">Korisničko ime</label>
                   </div>
       
                   <div class="form-outline mb-4">
-                    <input type="password" name="password" id="typePasswordX-2" class="form-control form-control-lg" />
+                    <input type="password" name="password" id="pass" class="form-control form-control-lg" />
                     <label class="form-label" for="typePasswordX-2" style="font-family: Arial, Helvetica, sans-serif;"
-                    value="<?php echo $password; ?>">Lozinka</label>
-                  </div>
-      
-                  <!-- Checkbox -->
-                  <div class="form-check d-flex justify-content-start mb-4">
-                    <input class="form-check-input" type="checkbox" value="" id="form1Example3"/>
-                    <label class="form-check-label" for="form1Example3" style="font-family: Arial, Helvetica, sans-serif; margin-left: 10px;">Zapamti lozinku</label>
+                    value="<?php echo isset($password) ? $password : ''; ?>">Lozinka</label>
                   </div>
       
                   <button class="btn btn-primary btn-lg btn-block" type="submit" 
@@ -80,7 +78,6 @@
                       Nemate nalog? <a href="registracija.php" style="font-family: Arial, Helvetica, sans-serif;">Registrujte se ovde!</a>
                     </p>
                   </div>
-          
                 </div>
               </div>
             </div>
@@ -96,63 +93,42 @@
           <div class="container text-center text-md-start mt-5">
             <div class="row mt-3">
               <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                <h6 class="text-uppercase fw-bold">FIN travel</h6>
+                <h6 class="text-uppercase fw-bold">Opis</h6>
                 <hr
                     class="mb-4 mt-0 d-inline-block mx-auto"
                     style="width: 60px; background-color: #7c4dff; height: 2px"
                     />
                 <p>
-                  pavlezoric2000@gmail.com
+                  FIN Travel - ponude za letovanje su savršen izbor 
+                  za sve one koji hoće spoj odmora, provoda i uživanja na nekoj od fenomenalnih 
+                  letnjih destinacija koje imamo u ponudi. 
                 </p>
               </div>
-              
-    
               
               <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                
-                <h6 class="text-uppercase fw-bold">Nesto</h6>
+              
+                <h6 class="text-uppercase fw-bold">Društvene mreže</h6>
                 <hr
                     class="mb-4 mt-0 d-inline-block mx-auto"
                     style="width: 60px; background-color: #7c4dff; height: 2px"
-                    />
+                  />
                 <p>
-                  Nesto
+                  <a class="link" href="https://www.facebook.com" target="_BLANK">
+                    <div class="social-image">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    Facebook
+                  </a>
                 </p>
                 <p>
-                  Nesto
-                </p>
-                <p>
-                  Nesto
-                </p>
-                <p>
-                  Nesto
-                </p>
-              </div>
-              
-    
-              
-              <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                
-                <h6 class="text-uppercase fw-bold">Nesto</h6>
-                <hr
-                    class="mb-4 mt-0 d-inline-block mx-auto"
-                    style="width: 60px; background-color: #7c4dff; height: 2px"
-                    />
-                <p>
-                  Nesto
-                </p>
-                <p>
-                  Nesto
-                </p>
-                <p>
-                  Nesto
-                </p>
-                <p>
-                  Nesto
+                  <a class="link" href="https://www.instagram.com" target="_BLANK">
+                    <div class="social-image">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    Instagram
+                  </a>
                 </p>
               </div>
-              
-    
               
               <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                 
@@ -183,11 +159,5 @@
           
         </div>
       </section>
-
-
-
-
-    </body>
-    </html>
-    
-    
+  </body>
+</html>
