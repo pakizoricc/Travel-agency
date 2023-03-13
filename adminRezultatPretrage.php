@@ -90,6 +90,26 @@
           <div class="col text-center mb-5">
             <h1>Rezultat pretrage</h1>
           </div>
+
+        <div class="row">
+          <?php
+            include 'sources/image_mapper.php';
+            $searches = $_SESSION['searches'];
+            $images = array();
+
+            foreach($searches as $row){
+              if(isset($row['destination']) && isset($row[0])) {
+                $dest = trim($row['destination']);
+                array_push($images, getImageByDestination($dest)[0]);
+              }
+            }
+
+            // Display the images
+            foreach($images as $image){
+              echo '<img src="' . $image . '" alt="Image" width="150" height="150">';
+            }
+          ?>
+        </div>
       
         <div class="row">
           <div class="col-sm-12 col-md-6 col-lg-6 col-mb-4">
