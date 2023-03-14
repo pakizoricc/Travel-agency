@@ -5,10 +5,11 @@ services:
          volumes: 
          - ./FIN-Travel-main:/var/www/html/
          ports:
-         - 9001:80
+         - 8000:80
          image: app:php
          container_name: php_container
-         # command: php -S 127.0.0.1:8001 index.php
+         command: php -S 127.0.0.1:8001 index.php
+         #php -S 127.0.0.1:8001 index.php
          # #docker run --name=php -d -it -p 80:80 --mount type=bind,source='C:\xampp\htdocs\FIN-Travel-main\FIN-Travel-main',target=/app webdevops/php-nginx-dev
          #php -S 127.0.0.1:8001
          #php -S localhost:800 -t FIN-Travel-main/
@@ -38,7 +39,7 @@ services:
          image: phpmyadmin
          restart: always
          ports:
-         - 9002:80
+         - 8001:80
          environment:
           PMA_HOST: db
          depends_on: 
