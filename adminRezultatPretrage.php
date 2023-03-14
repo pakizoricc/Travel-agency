@@ -69,16 +69,13 @@
             $images = array();
 
             foreach($searches as $row){
-              if(isset($row['destination']) && isset($row[0])) {
-                $dest = trim($row['destination']);
-                array_push($images, getImageByDestination($dest)[0]);
-              }
+              array_push($images, getImageByDestination(trim($row['destination']))[0]);
             }
 
             // Display the images
-            foreach($images as $image){
-              echo '<img src="' . $image . '" alt="Image" width="150" height="150">';
-            }
+            
+            echo '<a href = "putovanje.php?img=' . urlencode($images[0]) . '"><img src="' . $images[0] . '" alt="Image" width="500" height="500"></a>';
+            
           ?>
         </div>
       
