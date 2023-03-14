@@ -5,6 +5,7 @@ $titles = array("Sunset", "Beach", "Mountain", "Cityscape", "Forest");
 $from_dates = array("2022-05-01", "2022-05-03", "2022-05-05", "2022-05-06", "2022-05-07");
 $to_dates = array("2022-05-08", "2022-05-09", "2022-05-10");
 $transTypes = array("autobus", "voz", "avion", "brod", "automobil");
+$continents = array("Evropa");
 
 $file = fopen('destinations.txt', 'r');
 
@@ -19,7 +20,8 @@ fclose($file);
 //za accomodation
 $internet_connections = array("ima Wi-Fi", "nema Wi-Fi");
 $room_refriginators = array("ima sobni frižider", "nema sobni frižider");
-
+$name_accomodations = array("Moskva", "Atlas", "Merkur", "Evropa");
+$type_accomodations = array("1/1", "1/2", "1/3", "1/2+1", "1/3+1", "1/4");
 
 // Connect to the database
 $db = new mysqli("localhost", "root", "", "fin_travel");
@@ -44,16 +46,17 @@ foreach ($titles as $title) {
         if(trim($destination) == "") {
             break;
         }
-
-        foreach ($from_dates as $from_date) {
-            foreach ($to_dates as $to_date) {
-                foreach ($transTypes as $transType) {
-                    $numDays = rand(2, 10);
-                    $priceOffer = round(rand(70, 300) * 10, -1);
-                    $sql = "INSERT INTO arangements (title, destination, from_date, to_date, num_days, price_offer, trans_type) VALUES ('$title', '$destination', '$from_date', '$to_date', '$numDays', '$priceOffer', '$transType')";
-                    array_push($queries, $sql);
-                }  
-            }     
+        foreach($continents as $continent){
+            foreach ($from_dates as $from_date) {
+                foreach ($to_dates as $to_date) {
+                    foreach ($transTypes as $transType) {
+                        $numDays = rand(2, 10);
+                        $priceOffer = round(rand(70, 300) * 10, -1);
+                        $sql = "INSERT INTO arangements (title, destination, continent, from_date, to_date, num_days, price_offer, trans_type) VALUES ('$title', '$destination', '$continent', '$from_date', '$to_date', '$numDays', '$priceOffer', '$transType')";
+                        array_push($queries, $sql);
+                    }  
+                }     
+            }
         }
     }    
 }
@@ -68,12 +71,15 @@ foreach($queries as $query){
     }
 }
 
-//petlja za accomodation
-foreach ($internet_connections as $internet_connection) {
-    foreach ($room_refriginators as $room_refriginator){
-        $category = rand(1,5);
-        $sql2 = "INSERT INTO accomodation (category, internet_connection, room_refriginator) VALUES ('$category','$internet_connection','$room_refriginator');";
-        array_push($queries2, $sql2);
+foreach($name_accomodations as $name_accomodation){
+    foreach($type_accomodations as $type_accomodation){
+        foreach ($internet_connections as $internet_connection) {
+            foreach ($room_refriginators as $room_refriginator){
+                $category = rand(1,5);
+                $sql2 = "INSERT INTO accomodation (name_accomodation, type_accomodation, category, internet_connection, room_refriginator) VALUES ('$name_accomodation', '$type_accomodation', '$category','$internet_connection','$room_refriginator');";
+                array_push($queries2, $sql2);
+            }
+        }
     }
 }
 
