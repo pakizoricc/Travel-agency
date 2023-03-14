@@ -1,5 +1,21 @@
-FROM mysql:8.0
+FROM php:8.0-apache
 
-ENV MYSQL_ROOT_PASSWORD 1234
+COPY . /var/www/html/
+WORKDIR /var/www/html/
 
-COPY ./fin_travel.sql /docker-entrypoint.initdb.d/data.sql;
+RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
+RUN apt-get update && apt-get upgrade -y
+
+EXPOSE 8000
+
+# Run your application
+#CMD php-fpm
+#CMD ["php", "./registracija.php"]
+
+# FROM php:8.0-apache
+# RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
+# RUN apt-get update && apt-get upgrade -y
+
+
+# # Run your application
+# CMD php-fpm
