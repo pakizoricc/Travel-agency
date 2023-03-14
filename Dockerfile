@@ -8,6 +8,8 @@ RUN apt-get update && apt-get upgrade -y
 
 EXPOSE 8000
 
+CMD [ "php", "./index.php" ]
+
 # Run your application
 #CMD php-fpm
 #CMD ["php", "./registracija.php"]

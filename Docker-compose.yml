@@ -8,11 +8,12 @@ services:
          - 8000:80
          image: app:php
          container_name: php_container
-         command: php -S 127.0.0.1:8001 index.php
-         #php -S 127.0.0.1:8001 index.php
-         # #docker run --name=php -d -it -p 80:80 --mount type=bind,source='C:\xampp\htdocs\FIN-Travel-main\FIN-Travel-main',target=/app webdevops/php-nginx-dev
-         #php -S 127.0.0.1:8001
-         #php -S localhost:800 -t FIN-Travel-main/
+         #command: php -S 127.0.0.1:8002 index.php
+
+         #php -S 127.0.0.1:8000 index.php
+         #docker run --name=php -d -it -p 80:80 --mount type=bind,source='C:\xampp\htdocs\FIN-Travel-main\FIN-Travel-main',target=/app webdevops/php-nginx-dev
+         #php -S 127.0.0.1:8000
+   
          
          depends_on: 
          - db
