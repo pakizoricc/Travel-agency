@@ -3,13 +3,13 @@ services:
       app:
          build: .
          volumes: 
-         - .:/var/www/html/
+         - ./FIN-Travel-main:/var/www/html/
          ports:
-         - 8001:80
+         - 9001:80
          image: app:php
          container_name: php_container
-         command: php -S 127.0.0.1:8001 index.php
-         #docker run --name=php -d -it -p 80:80 --mount type=bind,source='C:\xampp\htdocs\FIN-Travel-main\FIN-Travel-main',target=/app webdevops/php-nginx-dev
+         # command: php -S 127.0.0.1:8001 index.php
+         # #docker run --name=php -d -it -p 80:80 --mount type=bind,source='C:\xampp\htdocs\FIN-Travel-main\FIN-Travel-main',target=/app webdevops/php-nginx-dev
          #php -S 127.0.0.1:8001
          #php -S localhost:800 -t FIN-Travel-main/
          
@@ -19,49 +19,31 @@ services:
 
       db:
          container_name: db
-         image: mysql:5.7
+         image: mysql
          build:
-             context: database
+             context: mysql
              dockerfile: Dockerfile   
          ports: 
          - 3307:3306
          restart: always
          volumes: 
-         - .db-data:/var/lib/mysql
-         - ./database/fin_travel.sql:/docker-entrypoint-initdb.d/data.sql
+         - ./db-data:/var/lib/mysql
+         - ./mysql/fin_travel.sql:/docker-entrypoint-initdb.d/data.sql
          environment:
             MYSQL_DATABASE: fin_travel
             MYSQL_ROOT_PASSWORD: 1234
-           # PMA_HOST: db
+           
+
+      phpmyadmin:
+         image: phpmyadmin
+         restart: always
+         ports:
+         - 9002:80
+         environment:
+          PMA_HOST: db
+         depends_on: 
+         - db
             
 
-# version: '3.8'
-# services:
-#     app:
-#         build: .
-#         depends_on:
-#             - db
-#         volumes:
-#             - .:/var/www/html/
-#         ports:
-#             - 8000:8000
-#     db:
-#         container_name: db
-#         image: mysql
-#         restart: always
-#         environment:
-#             MYSQL_ROOT_PASSWORD: 1234
-#             MYSQL_DATABASE: fin_travel
-#         ports:
-#             - "9906:3306"
-#     phpmyadmin:
-#       image: phpmyadmin/phpmyadmin
-#       ports:
-#           - '8080:80'
-#       restart: always
-#       environment:
-#           PMA_HOST: db
-#       depends_on:
-#           - db
 
       

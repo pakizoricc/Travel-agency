@@ -6,7 +6,7 @@ WORKDIR /var/www/html/
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 RUN apt-get update && apt-get upgrade -y
 
-EXPOSE 800
+EXPOSE 9001
 
 # Run your application
 #CMD php-fpm
