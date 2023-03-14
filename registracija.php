@@ -10,25 +10,25 @@ if (isset($_SESSION['registration_complete'])) {
 }
 
 if (isset($_GET['fname-fail']) && $_GET['fname-fail'] === 'true') {
-  echo '<script>window.onload = function() { alert("Ime nije popunjeno!"); }</script>';
+  echo '<script>window.onload = function() { alert("Niste sva polja popunili!"); }</script>';
 }
 if (isset($_GET['lname-fail']) && $_GET['lname-fail'] === 'true') {
-  echo '<script>window.onload = function() { alert("Prezime nije popunjeno!"); }</script>';
+  echo '<script>window.onload = function() { alert("Niste sva polja popunili!"); }</script>';
 }
 if (isset($_GET['username-fail']) && $_GET['username-fail'] === 'true') {
-  echo '<script>window.onload = function() { alert("Korisnicko ime nije popunjeno!"); }</script>';
+  echo '<script>window.onload = function() { alert("Niste sva polja popunili!"); }</script>';
 }
 if (isset($_GET['email-fail']) && $_GET['email-fail'] === 'true') {
-  echo '<script>window.onload = function() { alert("E-mail nije popunjen!"); }</script>';
+  echo '<script>window.onload = function() { alert("Niste sva polja popunili!"); }</script>';
 }
 if (isset($_GET['pass1-fail']) && $_GET['pass1-fail'] === 'true') {
-  echo '<script>window.onload = function() { alert("Šifra nije popunjena!"); }</script>';
+  echo '<script>window.onload = function() { alert("Niste sva polja popunili!"); }</script>';
 }
 if (isset($_GET['pass-fail']) && $_GET['pass-fail'] === 'true') {
-  echo '<script>window.onload = function() { alert("Šifre nisu iste!"); }</script>';
+  echo '<script>window.onload = function() { alert("Šifre moraju da budu iste!"); }</script>';
 }
 if (isset($_GET['role-fail']) && $_GET['role-fail'] === 'true') {
-  echo '<script>window.onload = function() { alert("Rola nije odabrana!"); }</script>';
+  echo '<script>window.onload = function() { alert("Niste sva polja popunili!"); }</script>';
 }
 ?>
 
@@ -38,7 +38,7 @@ if (isset($_GET['role-fail']) && $_GET['role-fail'] === 'true') {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prijava</title>
+    <title>FINTravel</title>
     <link rel="icon" type="image/png" href="Screenshot 2023-01-19 021232.png"/>
     <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist\css\bootstrap.css">
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -46,7 +46,7 @@ if (isset($_GET['role-fail']) && $_GET['role-fail'] === 'true') {
   </head>
   <style>
     body {
-        background-color: lightblue;
+        background-color: #fff;
         color: #666666;
         font-size: 14px;
         font-family: 'Raleway', sans-serif;
@@ -55,36 +55,7 @@ if (isset($_GET['role-fail']) && $_GET['role-fail'] === 'true') {
     }
   </style>
   <body>    
-    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" data-bs-theme="dark"
-    style="font-family: Arial, Helvetica, sans-serif;">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="Screenshot 2023-01-19 021232.png" alt="Bootstrap" width="70" height="35">
-              </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="pocetna.php" 
-                style="font-weight: bold;">Početna</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="pretraga.php" style="font-weight: bold;">Pretraga</a>
-              </li>
-              <li class="nav-item dropdown">
-                <li class="nav-item">
-                  <a class="nav-link ms-auto" href="prijava.php" style="font-weight: bold;">Uloguj se</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link ms-auto" href="registracija.php" style="font-weight: bold;">Registracija</a>
-                </li>
-              </li>
-            </ul>
-          </div>
-        </div>
-    </nav>
+    <?php include 'nav.php' ?>
 
 
  
@@ -143,13 +114,13 @@ if (isset($_GET['role-fail']) && $_GET['role-fail'] === 'true') {
                     <div class="radio-buttons">
                       <label for="role" style="font-family: Arial, Helvetica, sans-serif; 
                       font-weight:bold; margin-right: 10px;">Odaberi rolu:</label>
-                      <label style="font-family: Arial, Helvetica, sans-serif; margin-right: 5px;">
-                        <input type="radio" name="role" value="user"
-                        <?php if(isset($_SESSION['role']) && $_SESSION['role'] == "user") echo " checked"; ?>>Korisnik
-                      </label>
                       <label style="font-family: Arial, Helvetica, sans-serif;">
                         <input type="radio" name="role" value="admin"
                         <?php if(isset($_SESSION['role']) && $_SESSION['role'] == "admin") echo " checked"; ?>>Administrator
+                      </label>
+                      <label style="font-family: Arial, Helvetica, sans-serif;">
+                        <input type="radio" name="role" value="staff"
+                        <?php if(isset($_SESSION['role']) && $_SESSION['role'] == "staff") echo " checked"; ?>>STAFF
                       </label>
                     </div>
       
@@ -163,80 +134,6 @@ if (isset($_GET['role-fail']) && $_GET['role-fail'] === 'true') {
         </section>
       </form>
 
-      <section class="footer" style="width: 100%; background-color: #1c2331; padding-top: 80px; margin-top: 240px; 
-      bottom: 0; text-align: center; text-decoration-color: #fff;">
-        <section class="" style="color: #ccc;">
-          <div class="container text-center text-md-start mt-5">
-            
-            <div class="row mt-3">
-              
-              <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                
-                <h6 class="text-uppercase fw-bold" style="font-family: Arial, Helvetica, sans-serif;">Opis</h6>
-                <hr
-                    class="mb-4 mt-0 d-inline-block mx-auto"
-                    style="width: 60px; background-color: #7c4dff; height: 2px"
-                    />
-                <p style="font-family: Arial, Helvetica, sans-serif;">
-                  FIN Travel - ponude za letovanje su savršen izbor 
-                  za sve one koji hoće spoj odmora, provoda i uživanja na nekoj od fenomenalnih 
-                  letnjih destinacija koje imamo u ponudi. 
-                </p>
-              </div>
-                 
-              <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-              
-                <h6 class="text-uppercase fw-bold">Društvene mreže</h6>
-                <hr
-                    class="mb-4 mt-0 d-inline-block mx-auto"
-                    style="width: 60px; background-color: #7c4dff; height: 2px"
-                  />
-                <p>
-                  <a class="link" href="https://www.facebook.com" target="_BLANK">
-                    <div class="social-image">
-                        <i class="fab fa-facebook"></i>
-                    </div>
-                    Facebook
-                  </a>
-                </p>
-                <p>
-                  <a class="link" href="https://www.instagram.com" target="_BLANK">
-                    <div class="social-image">
-                        <i class="fab fa-facebook"></i>
-                    </div>
-                    Instagram
-                  </a>
-                </p>
-              </div>
-              
-              <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                
-                <h6 class="text-uppercase fw-bold" style="font-family: Arial, Helvetica, sans-serif;">Kontakti</h6>
-                <hr
-                    class="mb-4 mt-0 d-inline-block mx-auto"
-                    style="width: 60px; background-color: #7c4dff; height: 2px"
-                    />
-                <p><i class="fas fa-home mr-3" style="font-family: Arial, Helvetica, sans-serif;"></i> Kragujevac, Srbija 34000</p>
-                <p><i class="fas fa-envelope mr-3" style="font-family: Arial, Helvetica, sans-serif;"></i> fintravel@gmail.com</p>
-                <p><i class="fas fa-phone mr-3" style="font-family: Arial, Helvetica, sans-serif;"></i> +381 6234 567 88</p>
-                <p><i class="fas fa-print mr-3" style="font-family: Arial, Helvetica, sans-serif;"></i> +381 6234 567 89</p>
-              </div>
-             
-            </div>
-            
-          </div>
-        </section>
-     
-        
-    
-        
-        <div
-             class="text-center p-3"
-             style="background-color: rgba(0, 0, 0, 0.2)"
-             >
-          <P style="color: #ccc;" style="font-family: Arial, Helvetica, sans-serif;">© 2020 Copyright: FIN travel</P>
-          
-        </div>
-     </section>
+      <?php include 'footer.php' ?>
   </body>
 </html>
