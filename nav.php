@@ -23,11 +23,11 @@
                     Aranzmani
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Svi aranzmani</a></li>
-                    <li><a class="dropdown-item" href="#">Pretraga aranzmana</a></li>
+                    <li><a class="dropdown-item" href="index.php">Svi aranzmani</a></li>
+                    <li><a class="dropdown-item" href="pretraga.php">Pretraga aranzmana</a></li>
                 </ul>
                 <li class="nav-item">
-                    <a class="nav-link ms-auto" href="#">Odjavi se</a>
+                    <a class="nav-link ms-auto" href="registracija.php">Odjavi se</a>
                 </li>
             <?php
         } elseif ($_SESSION['role'] == "staff") {
@@ -36,13 +36,13 @@
                     <a class="nav-link " aria-current="page" href="#">Pocetna-staff</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pocetna.php">Svi aranzmani</a>
+                    <a class="nav-link" href="index.php">Svi aranzmani</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="pretraga.php">Pretraga aranzmana</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link ms-auto" href="logout.php">Odjavi se</a>
+                    <a class="nav-link ms-auto" href="registracija.php">Odjavi se</a>
                 </li>
             <?php
         }
